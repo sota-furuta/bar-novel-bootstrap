@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+
+/* テーマ変数と全体の土台だけを残し、レイアウトは Bootstrap に任せる */
+:root {
+  --bg: #111111;
+  --text: #f5f5f5;
+  --accent: #8a6846;
+  --border: #292929;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.8;
+  /* fixed-top ナビの高さ分を確保 */
+  padding-top: 72px;
+}
+
+/* Header */
+
+.site-navbar {
+  background: rgba(17, 17, 17, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  letter-spacing: 3px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #d8d8d8;
+  transition: color 0.3s;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: var(--accent);
+}
+
+/* Hero */
+
+.hero {
+  height: 65vh;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+    url("images/interior.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-copy {
+  font-size: 1.5rem;
+  line-height: 2;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.5s ease forwards;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.hero-title {
+  font-family: "Playfair Display", serif;
+  font-size: 7rem;
+  font-weight: 600;
+  line-height: 0.9;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 2s ease 1.8s forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sections */
+
+.section-title {
+  text-align: center;
+  margin-bottom: 24px;
+  font-family: "Playfair Display", serif;
+  font-size: 1.9rem;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+
+.section-narrow {
+  max-width: 720px;
+}
+
+.section-menu {
+  max-width: 500px;
+}
+
+.info-list li {
+  margin-bottom: 10px;
+}
+
+/* Menu */
+
+.menu-item {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.menu-price {
+  color: var(--accent);
+}
+
+/* Gallery（Bootstrap Carousel の見た目調整のみ） */
+
+.gallery-carousel {
+  max-width: 900px;
+}
+
+.gallery-img {
+  width: 50%;
+  height: 500px;
+  object-fit: contain;
+  margin: 0 auto;
+  border: 1px solid var(--border);
+}
+
+/* Buttons */
+
+.btn-accent {
+  min-width: 180px;
+  margin-top: 12px;
+  padding: 12px 28px;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 0;
+  transition: all 0.3s ease;
+}
+
+.btn-accent:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Footer */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  color: #888;
+}
+
+/* Responsive（Bootstrap のブレークポイントに合わせて調整分だけ） */
+
+@media (max-width: 767.98px) {
+  .logo {
+    font-size: 1.6rem;
+  }
+
+  .hero {
+    height: 50vh;
+  }
+
+  .hero-copy {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .hero-title {
+    font-size: 3.8rem;
+  }
+
+  .gallery-img {
+    height: 250px;
+  }
+
+  .info-list {
+    max-width: 320px;
+  }
+}
