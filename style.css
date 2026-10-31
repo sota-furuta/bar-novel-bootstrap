@@ -62,6 +62,106 @@ body {
   color: var(--cream);
 }
 
+/* ページ内リンク（UI改善で追加） */
+.navbar-dark .navbar-nav .nav-link {
+  color: var(--text);
+  transition: color 0.3s;
+  padding: 8px 12px;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+  color: var(--accent);
+}
+
+.navbar-toggler {
+  border-color: rgba(212, 161, 90, 0.5);
+}
+
+.tel-link {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.tel-link:hover {
+  color: var(--accent);
+}
+
+/* ギャラリーのインジケーター（UI改善で追加） */
+#galleryCarousel {
+  padding-bottom: 36px;
+}
+
+#galleryCarousel .carousel-indicators {
+  bottom: 0;
+  margin-bottom: 4px;
+}
+
+#galleryCarousel .carousel-indicators [data-bs-target] {
+  background-color: var(--accent);
+  width: 26px;
+  height: 3px;
+}
+
+/* スマホ用 下部固定バー（UI改善で追加） */
+.mobile-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1030;
+  display: flex;
+  background: rgba(11, 10, 8, 0.95);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--border);
+}
+
+.mobile-cta a {
+  flex: 1;
+  text-align: center;
+  padding: 13px 4px calc(13px + env(safe-area-inset-bottom));
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+
+.mobile-cta a + a {
+  border-left: 1px solid rgba(212, 161, 90, 0.25);
+}
+
+.mobile-cta a:active {
+  background: rgba(212, 161, 90, 0.15);
+}
+
+/* トップへ戻る（UI改善で追加） */
+.to-top {
+  position: fixed;
+  right: 16px;
+  bottom: 84px;
+  z-index: 1030;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  background: rgba(11, 10, 8, 0.85);
+  color: var(--accent);
+  font-size: 1.1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.to-top.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (min-width: 768px) {
+  .to-top {
+    bottom: 24px;
+  }
+}
+
 /* Hero（ベースページ: 65vh・左下・影付き・遅延フェード） */
 
 .hero {
@@ -133,6 +233,7 @@ body {
   padding: 18px;
   max-width: 700px;
   overflow: hidden;
+  scroll-margin-top: 84px;
 }
 
 .panel-center {
@@ -344,8 +445,11 @@ footer p {
   }
 
   .header-inner {
-    flex-direction: column;
     gap: 10px;
+  }
+
+  body {
+    padding-bottom: 56px; /* 下部固定バー分 */
   }
 
   .logo {
