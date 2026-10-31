@@ -14,7 +14,7 @@
 
   <!-- Bootstrap 5.3.8 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261031acc">
+  <link rel="stylesheet" href="style.css?v=20261101pochi">
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="90" tabindex="0">
@@ -64,65 +64,77 @@
       </h2>
       <div class="collapse panel-collapse" id="collapseMenu" data-bs-parent="#mainAccordion">
 
-        <div class="menu-category">DRINK</div>
+        <div class="pochi-tabs" role="tablist" aria-label="メニュー切り替え">
+          <button class="pochi-tab is-active" type="button" role="tab" aria-selected="true" data-menutab="drink">DRINK</button>
+          <button class="pochi-tab" type="button" role="tab" aria-selected="false" data-menutab="food">FOOD</button>
+        </div>
 
+        <div class="pochi-pane" data-menupane="drink">
         <div class="menu-item">
-          <span class="menu-name">
-            カクテル<br>
-            <small>ジントニック / ソルティドッグ /<br>ピーチツリーフィズ / カシスオレンジ 等</small>
+          <span class="menu-name">カクテル<br>
+            <small>ジントニック / ソルティドッグ / ピーチツリーフィズ / カシスオレンジ 等</small>
           </span>
           <span class="menu-price">¥750〜</span>
         </div>
 
         <div class="menu-item">
           <span class="menu-name">お任せカクテル<br>
-            <small>ピーチ系 / 紅茶系 /<br>ハーブ系 / グレープフルーツ系 etc...</small>
+            <small>ピーチ系 / 紅茶系 / ハーブ系 / グレープフルーツ系 etc...</small>
           </span>
           <span class="menu-price">¥750〜</span>
         </div>
 
         <div class="menu-item">
           <span class="menu-name">ウイスキー<br>
-            <small>デュワーズ / ジョニー・ウォーカー /<br>Makers Mark / グレンリヴェット etc...</small>
+            <small>デュワーズ / ジョニー・ウォーカー / Makers Mark / グレンリヴェット etc...</small>
           </span>
           <span class="menu-price">¥750〜</span>
         </div>
 
         <div class="menu-item">
-          <span class="menu-name">ハイネケン（瓶）</span>
+          <span class="menu-name">ハイネケン（瓶）
+          </span>
           <span class="menu-price">¥800</span>
         </div>
 
         <div class="menu-item">
-          <span class="menu-name">焼酎（お茶割・レモンサワー）</span>
+          <span class="menu-name">焼酎（お茶割・レモンサワー）
+          </span>
           <span class="menu-price">¥600〜</span>
         </div>
 
         <div class="menu-item">
-          <span class="menu-name">テキーラ</span>
+          <span class="menu-name">テキーラ
+          </span>
           <span class="menu-price">¥500</span>
         </div>
 
         <div class="menu-item">
-          <span class="menu-name">etc...</span>
+          <span class="menu-name">etc...
+          </span>
+        </div>
         </div>
 
-        <div class="menu-category">FOOD</div>
-
+        <div class="pochi-pane" data-menupane="food" hidden>
         <div class="menu-item">
-          <span class="menu-name">ソーセージ盛り合わせ</span>
+          <span class="menu-name">ソーセージ盛り合わせ
+          </span>
           <span class="menu-price">¥1,000</span>
         </div>
 
         <div class="menu-item">
-          <span class="menu-name">本日のパスタ</span>
+          <span class="menu-name">本日のパスタ
+          </span>
           <span class="menu-price">¥1,000〜</span>
         </div>
 
         <div class="menu-item">
-          <span class="menu-name">etc...</span>
+          <span class="menu-name">etc...
+          </span>
         </div>
 
+          <img class="pochi-menu-photo" src="IMG_8580.jpeg" alt="ソーセージ盛り合わせ">
+        </div>
       </div>
     </section>
 
@@ -294,6 +306,19 @@
         const panel = el.closest(".panel");
         const y = panel.getBoundingClientRect().top + window.scrollY - 84;
         if (panel.getBoundingClientRect().top < 0) window.scrollTo({ top: y, behavior: "smooth" });
+      });
+    });
+
+    // ポチ版メニューUI: DRINK / FOOD タブ切り替え
+    document.querySelectorAll("[data-menutab]").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll("[data-menutab]").forEach((t) => {
+          t.classList.toggle("is-active", t === tab);
+          t.setAttribute("aria-selected", t === tab ? "true" : "false");
+        });
+        document.querySelectorAll("[data-menupane]").forEach((p) => {
+          p.hidden = p.dataset.menupane !== tab.dataset.menutab;
+        });
       });
     });
   </script>
