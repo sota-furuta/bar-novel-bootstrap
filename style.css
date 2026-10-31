@@ -550,3 +550,93 @@ footer p {
     margin-bottom: 20px;
   }
 }
+
+/* ===== プルダウン改善（Bootstrap Accordion 化） ===== */
+
+.panel-btn {
+  background: transparent;
+  color: var(--cream);
+  font-family: "Playfair Display", serif;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  justify-content: center;
+  text-align: center;
+  padding: 6px 34px;
+  box-shadow: none !important;
+  position: relative;
+}
+
+.panel-btn:not(.collapsed) {
+  background: transparent;
+  color: var(--cream);
+}
+
+.panel-btn:focus {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.panel-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Bootstrap 標準のシェブロンを消し、回転する + / − に */
+.panel-btn::after {
+  background-image: none;
+  content: "+";
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  margin: 0;
+  width: auto;
+  height: auto;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 1.4rem;
+  color: var(--cream-dim);
+  transform: translateY(-50%) rotate(0deg);
+  transition: transform 0.35s ease, color 0.3s;
+}
+
+.panel-btn:not(.collapsed)::after {
+  content: "−";
+  color: var(--accent);
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.panel-btn:hover::after {
+  color: var(--accent);
+}
+
+/* 開閉をなめらかに */
+.panel-collapse {
+  transition: height 0.45s ease;
+}
+
+/* 開いた中身がふわっと出る */
+.panel-collapse.show > * {
+  animation: panelIn 0.45s ease;
+}
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .panel-btn {
+    min-height: 70px;
+    font-size: 1.8rem;
+  }
+
+  .panel-btn::after {
+    right: 16px;
+  }
+}

@@ -14,7 +14,7 @@
 
   <!-- Bootstrap 5.3.8 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261031bg">
+  <link rel="stylesheet" href="style.css?v=20261031acc">
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="90" tabindex="0">
@@ -55,13 +55,14 @@
     </div>
   </header>
 
-  <main class="sections">
+  <main class="sections accordion" id="mainAccordion">
 
     <!-- MENU -->
     <section id="menu" class="panel">
-      <h2 class="panel-title collapsed" data-bs-toggle="collapse" data-bs-target="#collapseMenu"
-        aria-expanded="false" aria-controls="collapseMenu" role="button">MENU</h2>
-      <div class="collapse panel-collapse" id="collapseMenu" data-bs-parent=".sections">
+      <h2 class="accordion-header">
+        <button class="accordion-button panel-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMenu" aria-expanded="false" aria-controls="collapseMenu">MENU</button>
+      </h2>
+      <div class="collapse panel-collapse" id="collapseMenu" data-bs-parent="#mainAccordion">
 
         <div class="menu-category">DRINK</div>
 
@@ -127,9 +128,10 @@
 
     <!-- INFORMATION -->
     <section id="info" class="panel">
-      <h2 class="panel-title collapsed" data-bs-toggle="collapse" data-bs-target="#collapseInfo"
-        aria-expanded="false" aria-controls="collapseInfo" role="button">INFORMATION</h2>
-      <div class="collapse panel-collapse" id="collapseInfo" data-bs-parent=".sections">
+      <h2 class="accordion-header">
+        <button class="accordion-button panel-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInfo" aria-expanded="false" aria-controls="collapseInfo">INFORMATION</button>
+      </h2>
+      <div class="collapse panel-collapse" id="collapseInfo" data-bs-parent="#mainAccordion">
 
         <div class="info-item">
           <span>営業時間</span>
@@ -159,9 +161,10 @@
 
     <!-- GALLERY -->
     <section id="gallery" class="panel">
-      <h2 class="panel-title collapsed" data-bs-toggle="collapse" data-bs-target="#collapseGallery"
-        aria-expanded="false" aria-controls="collapseGallery" role="button">GALLERY</h2>
-      <div class="collapse panel-collapse" id="collapseGallery" data-bs-parent=".sections">
+      <h2 class="accordion-header">
+        <button class="accordion-button panel-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGallery" aria-expanded="false" aria-controls="collapseGallery">GALLERY</button>
+      </h2>
+      <div class="collapse panel-collapse" id="collapseGallery" data-bs-parent="#mainAccordion">
 
         <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="10000">
           <div class="carousel-indicators">
@@ -209,9 +212,10 @@
 
     <!-- ACCESS -->
     <section id="access" class="panel panel-center">
-      <h2 class="panel-title collapsed" data-bs-toggle="collapse" data-bs-target="#collapseAccess"
-        aria-expanded="false" aria-controls="collapseAccess" role="button">ACCESS</h2>
-      <div class="collapse panel-collapse" id="collapseAccess" data-bs-parent=".sections">
+      <h2 class="accordion-header">
+        <button class="accordion-button panel-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAccess" aria-expanded="false" aria-controls="collapseAccess">ACCESS</button>
+      </h2>
+      <div class="collapse panel-collapse" id="collapseAccess" data-bs-parent="#mainAccordion">
         <p>小田急線 伊勢原駅南口より徒歩約1分</p>
         <a class="button" href="https://maps.app.goo.gl/pQygL5VJowjCGWbm6" target="_blank" rel="noopener noreferrer">
           Google Maps
@@ -221,9 +225,10 @@
 
     <!-- INSTAGRAM -->
     <section id="instagram" class="panel panel-center">
-      <h2 class="panel-title collapsed" data-bs-toggle="collapse" data-bs-target="#collapseInsta"
-        aria-expanded="false" aria-controls="collapseInsta" role="button">INSTAGRAM</h2>
-      <div class="collapse panel-collapse" id="collapseInsta" data-bs-parent=".sections">
+      <h2 class="accordion-header">
+        <button class="accordion-button panel-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInsta" aria-expanded="false" aria-controls="collapseInsta">INSTAGRAM</button>
+      </h2>
+      <div class="collapse panel-collapse" id="collapseInsta" data-bs-parent="#mainAccordion">
         <p>
           ご予約・お問い合わせは<br>
           Instagramより承っております
