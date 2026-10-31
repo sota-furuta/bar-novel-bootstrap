@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap');
 
-/* オーナー版ブランチ（feature-bar-novel-oner-review）のパレットと世界観を
-   Bootstrap 5.3.8 で再構成したもの */
+/* オーナー版ブランチ（feature-bar-novel-oner-review）のデザインを
+   Bootstrap 5.3.8 のコンポーネントで忠実に再構成したもの。
+   色・余白・文字色の付け方はオーナー版に合わせている */
 :root {
   --bg: #0b0a08;
   --text: #f8f3eb;
   --accent: #e0b06a;
   --border: #5a3a1d;
-  --ink: #3b2a18;
+  --cream: #f2e3c6;
   --cream-dim: #d9c9b3;
 }
 
@@ -16,32 +17,32 @@ html {
 }
 
 body {
-  /* オーナー版のゴールドグラデーション */
   background: linear-gradient(180deg,
       #c7a678 60%,
       #e0c18f 60%,
       #c7a678 60%,
       #c88b4e 100%);
   background-attachment: fixed;
-  color: var(--ink);
+  color: var(--text);
   font-family: "Noto Sans JP", sans-serif;
   line-height: 1.8;
-  padding-top: 69px;
+  min-height: 100vh;
+  padding-top: 70px; /* fixed navbar 分 */
 }
 
-/* Navbar */
+/* Navbar（オーナー版ヘッダー相当） */
 
 .site-navbar {
   background: rgba(11, 10, 8, 0.92);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(224, 176, 106, 0.35);
+  border-bottom: 1px solid #4d3117;
 }
 
 .logo {
   font-family: "Playfair Display", serif;
-  font-size: 1.7rem;
+  font-size: 2rem;
   letter-spacing: 3px;
-  color: #f2e3c6 !important;
+  color: var(--cream) !important;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -56,6 +57,7 @@ body {
 .btn-accent {
   color: var(--accent);
   border: 1px solid var(--accent);
+  background: rgba(212, 161, 90, 0.08);
   border-radius: 0;
   transition: all 0.3s ease;
 }
@@ -65,72 +67,69 @@ body {
   color: #111;
 }
 
+/* オーナー版 .button 相当 */
 .btn-accent-solid {
-  background: var(--accent);
+  background: rgba(212, 161, 90, 0.08);
   border: 1px solid var(--accent);
-  color: #111;
-  font-weight: 500;
+  color: var(--accent);
   border-radius: 0;
-  transition: opacity 0.3s;
+  min-width: 180px;
+  transition: all 0.3s ease;
 }
 
 .btn-accent-solid:hover {
   background: var(--accent);
   color: #111;
-  opacity: 0.88;
 }
 
-/* Hero（全面写真＋暗転オーバーレイ） */
+/* Hero（オーナー版: 65vh、左下オーバーレイ、影付き文字） */
 
 .hero {
-  min-height: 92vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 90px 24px;
+  position: relative;
+  height: 65vh;
   background:
-    linear-gradient(rgba(11, 10, 8, 0.55), rgba(11, 10, 8, 0.75)),
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
     url("https://raw.githubusercontent.com/sota-furuta/bar-novel/feature-bar-novel-oner-review/images/interior.jpg");
   background-size: cover;
   background-position: center center;
 }
 
+.hero-overlay {
+  position: absolute;
+  left: 5%;
+  bottom: 8%;
+  color: var(--cream);
+}
+
 .hero-copy {
-  color: #f2e3c6;
-  font-size: clamp(1.05rem, 2.6vw, 1.4rem);
-  line-height: 2.1;
-  letter-spacing: 2px;
-  margin-bottom: 26px;
+  font-size: 1.5rem;
+  line-height: 2;
+  margin-bottom: 30px;
+  color: var(--cream);
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transform: translateY(20px);
   animation: fadeUp 1.5s ease forwards;
 }
 
 .hero-title {
   font-family: "Playfair Display", serif;
-  font-size: clamp(3.6rem, 10vw, 7rem);
+  font-size: 7rem;
   font-weight: 600;
-  line-height: 0.95;
-  color: #f2e3c6;
-  margin-bottom: 24px;
-  animation: fadeUp 2s ease forwards;
-  animation-delay: 0.4s;
-  opacity: 0;
-}
-
-.hero-sub {
-  color: var(--accent);
-  letter-spacing: 2px;
-  font-size: 0.95rem;
+  line-height: 0.9;
+  color: var(--cream);
+  text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
   margin: 0;
-  animation: fadeUp 2s ease forwards;
-  animation-delay: 0.9s;
   opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 2s ease forwards;
+  animation-delay: 1.8s;
 }
 
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(20px);
   }
 
   to {
@@ -139,129 +138,220 @@ body {
   }
 }
 
-/* Accordion（オーナー版 details の見た目に寄せる） */
+/* Accordion（オーナー版 details: 最大700px・濃色半透明・中央見出し・＋/−） */
 
 .accordion-wrap {
-  max-width: 880px;
-  padding-top: 56px;
-  padding-bottom: 56px;
+  max-width: 700px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .accordion-custom .accordion-item {
   background: rgba(18, 12, 8, 0.65);
-  border: 1px solid rgba(90, 58, 29, 0.6);
+  backdrop-filter: blur(3px);
+  border: 1px solid var(--border);
   border-radius: 0;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   overflow: hidden;
 }
 
 .accordion-custom .accordion-button {
   background: transparent;
-  color: #f2e3c6;
+  color: var(--cream);
   font-family: "Playfair Display", serif;
-  font-size: 1.35rem;
-  letter-spacing: 3px;
-  padding: 20px 24px;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  justify-content: center;
+  text-align: center;
+  padding: 18px;
   box-shadow: none;
+  position: relative;
 }
 
 .accordion-custom .accordion-button:not(.collapsed) {
-  background: rgba(224, 176, 106, 0.08);
-  color: var(--accent);
+  background: transparent;
+  color: var(--cream);
 }
 
 .accordion-custom .accordion-button:focus {
   box-shadow: none;
-  border-color: transparent;
 }
 
+/* Bootstrap のシェブロンを消してオーナー版の + / − に */
 .accordion-custom .accordion-button::after {
-  filter: invert(80%) sepia(30%) saturate(400%) hue-rotate(-15deg);
+  background-image: none;
+  content: "+";
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 1.4rem;
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+
+.accordion-custom .accordion-button:not(.collapsed)::after {
+  content: "−";
+  transform: translateY(-50%);
 }
 
 .accordion-custom .accordion-body {
-  color: #e6d7c2;
-  padding: 8px 24px 28px;
+  color: var(--cream);
+  padding: 0 18px 18px;
 }
 
-/* Menu rows */
+/* Menu（オーナー版: 品名アクセント色・価格クリーム） */
 
 .menu-category {
+  margin-top: 28px;
+  margin-bottom: 12px;
   font-family: "Playfair Display", serif;
-  letter-spacing: 3px;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
   color: var(--accent);
-  font-size: 1.1rem;
-  margin: 14px 0 6px;
+  border-left: 3px solid var(--accent);
+  padding-left: 12px;
+}
+
+.accordion-body .menu-category:first-child {
+  margin-top: 6px;
 }
 
 .menu-row {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-start;
   gap: 16px;
-  padding: 11px 0;
-  border-bottom: 1px dotted rgba(224, 176, 106, 0.35);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(224, 176, 106, 0.25);
+}
+
+.menu-row > span:first-child {
+  color: var(--accent);
+  font-weight: 500;
+  text-align: left;
 }
 
 .menu-row small {
-  color: #bfae94;
-  font-size: 0.82rem;
+  display: block;
+  margin-top: 4px;
+  color: var(--cream);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-weight: 400;
 }
 
 .menu-price {
-  font-family: "Playfair Display", serif;
-  color: var(--accent);
+  color: var(--cream) !important;
+  font-weight: 500;
   white-space: nowrap;
 }
 
+/* Information の値側はクリーム（品名側ルールに合わせ、値spanを上書き） */
+#collapseInfo .menu-row > span:last-child {
+  color: var(--cream);
+  font-weight: 500;
+}
+
 .tel-link {
-  color: #e6d7c2;
+  color: var(--cream);
   text-decoration: none;
 }
 
-/* Gallery */
+/* Gallery（オーナー版: 幅50%・高さ500px・contain・キャプション帯） */
 
 .gallery-img {
-  width: 100%;
-  max-width: 560px;
-  height: 380px;
-  object-fit: cover;
+  width: 50%;
+  height: 500px;
+  object-fit: contain;
   margin: 0 auto;
-  border: 1px solid rgba(90, 58, 29, 0.6);
+  border-bottom: 1px solid rgba(224, 176, 106, 0.25);
 }
 
 .slide-caption {
+  margin: 12px auto;
+  width: 50%;
   text-align: center;
   color: #e6d7c2;
-  margin: 12px 0 0;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  background: rgba(25, 25, 25, 0.25);
+  padding: 4px 0;
+}
+
+/* カルーセルの送りボタンをオーナー版の四角ボタンに寄せる */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+  height: 50px;
+  top: 250px;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 1;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 1;
+}
+
+.carousel-control-prev {
+  left: 10px;
+}
+
+.carousel-control-next {
+  right: 10px;
+}
+
+/* Access / Instagram（オーナー版: 本文クリーム・最大320px中央） */
+
+#collapseAccess p,
+#collapseInsta p {
+  color: var(--cream);
+  font-weight: 500;
+  max-width: 320px;
+  margin: 0 auto 16px;
+  text-align: center;
 }
 
 /* Footer */
 
 .site-footer {
-  color: rgba(59, 42, 24, 0.85);
-  padding: 30px 24px 40px;
-  font-size: 0.92rem;
+  text-align: center;
+  padding: 24px;
+  border-top: 1px solid var(--border);
+  color: #ddd3c4;
 }
 
 /* Responsive */
 
-@media (max-width: 767.98px) {
-  .hero {
-    min-height: 78vh;
-    padding: 70px 18px;
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3.6rem;
+  }
+
+  .hero-copy {
+    font-size: 1.1rem;
   }
 
   .gallery-img {
-    height: 250px;
+    width: 100%;
+    height: 300px;
+  }
+
+  .slide-caption {
+    width: 100%;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    top: 150px;
   }
 
   .accordion-custom .accordion-button {
-    font-size: 1.15rem;
-    padding: 16px 18px;
-  }
-
-  .accordion-custom .accordion-body {
-    padding: 6px 18px 22px;
+    font-size: 1.3rem;
   }
 }
