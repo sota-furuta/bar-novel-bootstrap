@@ -1,18 +1,15 @@
 # bar-novel-bootstrap
 
-BAR NOVEL（伊勢原のバー）のホームページ。元リポジトリ `sota-furuta/bar-novel` の
-オーナー版ブランチ（feature-bar-novel-oner-review）をベースに、
-Bootstrap 5.3.8 で UI を改善した版です。
+BAR NOVEL（伊勢原のバー）のホームページ。
+公開中のベースページ https://sota-furuta.github.io/bar-novel/
+（元リポジトリ `sota-furuta/bar-novel` の feature-bar-novel-oner-review ブランチ）の
+デザイン・内容・数値をそのままに、実装だけ Bootstrap 5.3.8 に置き換えた版です。
 
-## デザイン
-- 背景色は琥珀色（feature-bar-novel-amber-color ブランチ）: 上から灯るような放射グラデーション
-  （#a86f30 → #7f4d1f → #563215 → #321d0d → #18100a → #0b0a08）、差し色 #d4a15a、枠 #4d3117
-- 中身と世界観はオーナー版ベース: ヒーロー全面写真＋左下コピー「女性一人でも気軽に。会話とお酒を楽しむ居心地の良い空間。」、
-  詳細メニュー、開閉式セクション、ギャラリーのキャプション表記
-- UI 改善（Bootstrap）: ナビの現在地表示（スクロールスパイ）、ヒーローに Maps ボタンと営業バッジ、
-  パネルをカード化（影・余白）、メニューに点線リーダー、情報はテーブル化、
-  ギャラリーにインジケーター追加、スマホ最適化
+## ベースページからの変更点（見た目は変えない）
+- 開閉セクション: 素の details + 独自JS → Bootstrap Collapse（同時に開くのは1つだけ、ベースのJSと同じ挙動）
+- ギャラリー: 独自スライダーJS → Bootstrap Carousel（10秒自動送り、送りボタンはベースの四角ボタンに合わせて調整）
+- ヘッダー: Bootstrap Navbar（中身はベースどおりロゴのみ）
+- 背景色だけ琥珀色グラデーション（feature-bar-novel-amber-color ブランチ）に変更
 
 ## 画像
-- ヒーロー背景とギャラリー先頭4枚はオーナー版ブランチの images/ を raw URL でリンク表示。
-- ギャラリーの残りはリポジトリ直下の IMG_8582〜8584.jpeg を使用。
+写真は元リポジトリの images/（exterior / interior / pasta / food）を raw URL でリンク表示しています。
