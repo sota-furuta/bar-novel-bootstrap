@@ -25,6 +25,7 @@ body {
       #e0c18f 60%,
       #c7a678 60%,
       #c88b4e 100%);
+  background-attachment: fixed;
   color: var(--text);
   font-family: "Noto Sans JP", sans-serif;
   line-height: 1.8;
