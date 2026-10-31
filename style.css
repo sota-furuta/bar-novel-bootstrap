@@ -17,14 +17,12 @@ html {
 }
 
 body {
-  background: radial-gradient(ellipse at top,
-      #a86f30 0%,
-      #7f4d1f 20%,
-      #563215 40%,
-      #321d0d 65%,
-      #18100a 85%,
-      #0b0a08 100%);
-  background-attachment: fixed;
+  /* 背景色は添付スクリーンショットの色（ベースページのゴールドグラデーション） */
+  background: linear-gradient(180deg,
+      #c7a678 60%,
+      #e0c18f 60%,
+      #c7a678 60%,
+      #c88b4e 100%);
   color: var(--text);
   font-family: "Noto Sans JP", sans-serif;
   line-height: 1.8;
