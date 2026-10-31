@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap');
 
-/* テーマ変数と全体の土台だけを残し、レイアウトは Bootstrap に任せる */
+/* カラーとフォントはオーナー要望により元のデザインから変更なし。
+   レイアウトは Bootstrap 5.3 に任せ、ここはテーマの上書きだけを行う */
 :root {
   --bg: #111111;
   --text: #f5f5f5;
   --accent: #8a6846;
   --border: #292929;
+  --bg-alt: #161616;
+  --text-dim: #bdbdbd;
 }
 
 html {
@@ -17,11 +20,14 @@ body {
   color: var(--text);
   font-family: "Noto Sans JP", sans-serif;
   line-height: 1.8;
-  /* fixed-top ナビの高さ分を確保 */
-  padding-top: 72px;
+  padding-top: 69px; /* fixed navbar 分 */
 }
 
-/* Header */
+.text-dim {
+  color: var(--text-dim);
+}
+
+/* Navbar */
 
 .site-navbar {
   background: rgba(17, 17, 17, 0.92);
@@ -31,7 +37,7 @@ body {
 
 .logo {
   font-family: "Playfair Display", serif;
-  font-size: 2rem;
+  font-size: 1.7rem;
   letter-spacing: 3px;
 }
 
@@ -44,105 +50,9 @@ body {
   color: var(--accent);
 }
 
-/* Hero */
-
-.hero {
-  height: 65vh;
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-    url("IMG_8581.jpeg");
-  background-size: cover;
-  background-position: center;
-}
-
-.hero-copy {
-  font-size: 1.5rem;
-  line-height: 2;
-  margin-bottom: 30px;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1.5s ease forwards;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
-}
-
-.hero-title {
-  font-family: "Playfair Display", serif;
-  font-size: 7rem;
-  font-weight: 600;
-  line-height: 0.9;
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 2s ease 1.8s forwards;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Sections */
-
-.section-title {
-  text-align: center;
-  margin-bottom: 24px;
-  font-family: "Playfair Display", serif;
-  font-size: 1.9rem;
-  letter-spacing: 2px;
-  color: var(--accent);
-}
-
-.section-narrow {
-  max-width: 720px;
-}
-
-.section-menu {
-  max-width: 500px;
-}
-
-.info-list li {
-  margin-bottom: 10px;
-}
-
-/* Menu */
-
-.menu-item {
-  padding: 14px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.menu-price {
-  color: var(--accent);
-}
-
-/* Gallery（Bootstrap Carousel の見た目調整のみ） */
-
-.gallery-carousel {
-  max-width: 900px;
-}
-
-.gallery-img {
-  width: 50%;
-  height: 500px;
-  object-fit: contain;
-  margin: 0 auto;
-  border: 1px solid var(--border);
-}
-
-/* Buttons */
+/* Buttons（アクセント色） */
 
 .btn-accent {
-  min-width: 180px;
-  margin-top: 12px;
-  padding: 12px 28px;
   color: var(--accent);
   border: 1px solid var(--accent);
   border-radius: 0;
@@ -154,38 +64,235 @@ body {
   color: #fff;
 }
 
+.btn-accent-solid {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: #fff;
+  border-radius: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-accent-solid:hover {
+  background: var(--accent);
+  color: #fff;
+  opacity: 0.85;
+}
+
+/* Hero */
+
+.hero {
+  padding: 72px 0 84px;
+}
+
+.hero-eyebrow {
+  color: var(--accent);
+  letter-spacing: 4px;
+  font-size: 0.8rem;
+  margin-bottom: 18px;
+}
+
+.hero-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(3.4rem, 8vw, 6.2rem);
+  font-weight: 600;
+  line-height: 0.95;
+  margin-bottom: 26px;
+}
+
+.hero-lead {
+  color: var(--text-dim);
+  font-size: 1.1rem;
+  margin-bottom: 22px;
+}
+
+.badge-outline {
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-weight: 400;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: transparent;
+}
+
+/* ヒーロー写真のずらし枠 */
+.hero-frame {
+  position: relative;
+}
+
+.hero-frame::before {
+  content: "";
+  position: absolute;
+  inset: 18px -18px -18px 18px;
+  border: 1px solid var(--accent);
+  z-index: 0;
+}
+
+.hero-frame img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+}
+
+/* Sections */
+
+.section-pad {
+  padding-top: 84px;
+  padding-bottom: 84px;
+}
+
+.section-alt {
+  background: var(--bg-alt);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 38px;
+}
+
+.section-no {
+  color: var(--accent);
+  font-family: "Playfair Display", serif;
+  letter-spacing: 2px;
+}
+
+.section-head h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: var(--accent);
+  margin: 0;
+}
+
+/* Information table */
+
+.table-dark-custom {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--text);
+  border-color: var(--border);
+}
+
+.table-dark-custom th {
+  color: var(--accent);
+  font-weight: 500;
+  white-space: nowrap;
+  border-color: var(--border);
+}
+
+.table-dark-custom td {
+  border-color: var(--border);
+}
+
+.section-photo {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
+/* Menu cards */
+
+.menu-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0;
+}
+
+.menu-card-title {
+  font-family: "Playfair Display", serif;
+  letter-spacing: 3px;
+  font-size: 1.3rem;
+  color: var(--text);
+}
+
+.menu-price {
+  font-family: "Playfair Display", serif;
+  font-size: 2.4rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.menu-price span {
+  font-size: 1.2rem;
+}
+
+/* Gallery */
+
+.gallery-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  overflow: hidden;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  transition: transform 0.4s ease;
+}
+
+.gallery-img-lg {
+  height: 240px;
+}
+
+.gallery-btn:hover .gallery-img {
+  transform: scale(1.03);
+}
+
+.modal-photo {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0;
+}
+
 /* Footer */
 
 .site-footer {
+  padding: 40px 24px;
   border-top: 1px solid var(--border);
-  color: #888;
 }
 
-/* Responsive（Bootstrap のブレークポイントに合わせて調整分だけ） */
+.footer-brand {
+  font-family: "Playfair Display", serif;
+  letter-spacing: 3px;
+  font-size: 1.3rem;
+}
+
+.footer-copy {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
 
 @media (max-width: 767.98px) {
-  .logo {
-    font-size: 1.6rem;
-  }
-
   .hero {
-    height: 50vh;
+    padding: 40px 0 56px;
   }
 
-  .hero-copy {
-    font-size: 1rem;
-    line-height: 1.8;
+  .hero-frame img {
+    height: 320px;
   }
 
-  .hero-title {
-    font-size: 3.8rem;
+  .hero-frame::before {
+    inset: 12px -10px -12px 12px;
   }
 
-  .gallery-img {
-    height: 250px;
+  .section-pad {
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
 
-  .info-list {
-    max-width: 320px;
+  .gallery-img,
+  .gallery-img-lg {
+    height: 180px;
   }
 }
