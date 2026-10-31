@@ -9,13 +9,16 @@
 
   <meta name="description"
     content="伊勢原駅南口徒歩1分。女性一人でも気軽に利用できるBAR NOVEL。カクテルやウイスキーを楽しめる居心地の良い空間です。">
+  <meta property="og:title" content="BAR NOVEL">
+  <meta property="og:description" content="女性一人でも気軽に。会話とお酒を楽しむ居心地の良い空間。">
+  <meta property="og:type" content="website">
 
   <!-- Bootstrap 5.3.8 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="90" tabindex="0">
 
   <!-- ナビゲーション -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top site-navbar">
@@ -35,7 +38,7 @@
           <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
           <li class="nav-item"><a class="nav-link" href="#access">Access</a></li>
           <li class="nav-item ms-md-3 mt-2 mt-md-0">
-            <a class="btn btn-accent btn-sm px-3" href="https://instagram.com/isehara.bar.cocktail.novel"
+            <a class="btn btn-outline-accent btn-sm px-3" href="https://instagram.com/isehara.bar.cocktail.novel"
               target="_blank" rel="noopener noreferrer">Instagram</a>
           </li>
         </ul>
@@ -43,7 +46,7 @@
     </div>
   </nav>
 
-  <!-- ヒーロー（オーナー版どおり: 全面写真＋左下にコピーとタイトル） -->
+  <!-- ヒーロー -->
   <header class="hero" id="top">
     <div class="hero-overlay">
       <p class="hero-copy">
@@ -52,204 +55,224 @@
         居心地の良い空間。
       </p>
       <h1 class="hero-title">BAR<br>NOVEL</h1>
+      <div class="hero-actions">
+        <a class="btn btn-accent-solid" href="https://maps.app.goo.gl/pQygL5VJowjCGWbm6"
+          target="_blank" rel="noopener noreferrer">Google Maps</a>
+        <a class="btn btn-outline-light-custom" href="#menu">メニューを見る</a>
+      </div>
+    </div>
+    <div class="hero-badges">
+      <span class="badge hero-badge">20:00 – 04:00</span>
+      <span class="badge hero-badge">月曜定休</span>
+      <span class="badge hero-badge">伊勢原駅南口 徒歩1分</span>
     </div>
   </header>
 
-  <!-- アコーディオン式セクション（オーナー版の details 構成を Bootstrap Accordion で再現） -->
-  <main class="container accordion-wrap">
-    <div class="accordion accordion-custom" id="mainAccordion">
+  <main class="page-main">
 
-      <!-- MENU -->
-      <div class="accordion-item" id="menu">
-        <h2 class="accordion-header">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseMenu" aria-expanded="true" aria-controls="collapseMenu">
-            MENU
-          </button>
-        </h2>
-        <div id="collapseMenu" class="accordion-collapse collapse show" data-bs-parent="#mainAccordion">
-          <div class="accordion-body">
-            <h3 class="menu-category">DRINK</h3>
+    <!-- MENU -->
+    <section id="menu" class="panel">
+      <h2 class="panel-title" data-bs-toggle="collapse" data-bs-target="#collapseMenu"
+        aria-expanded="true" aria-controls="collapseMenu" role="button">
+        MENU <span class="panel-toggle-icon"></span>
+      </h2>
+      <div class="collapse show" id="collapseMenu">
+        <h3 class="menu-category">DRINK</h3>
 
-            <div class="menu-row">
-              <span>カクテル<br>
-                <small>ジントニック / ソルティドッグ / ピーチツリーフィズ / カシスオレンジ 等</small>
-              </span>
-              <span class="menu-price">¥750〜</span>
-            </div>
-            <div class="menu-row">
-              <span>お任せカクテル<br>
-                <small>ピーチ系 / 紅茶系 / ハーブ系 / グレープフルーツ系 etc...</small>
-              </span>
-              <span class="menu-price">¥750〜</span>
-            </div>
-            <div class="menu-row">
-              <span>ウイスキー<br>
-                <small>デュワーズ / ジョニー・ウォーカー / Makers Mark / グレンリヴェット etc...</small>
-              </span>
-              <span class="menu-price">¥750〜</span>
-            </div>
-            <div class="menu-row">
-              <span>ハイネケン（瓶）</span>
-              <span class="menu-price">¥800</span>
-            </div>
-            <div class="menu-row">
-              <span>焼酎（お茶割・レモンサワー）</span>
-              <span class="menu-price">¥600〜</span>
-            </div>
-            <div class="menu-row">
-              <span>テキーラ</span>
-              <span class="menu-price">¥500</span>
-            </div>
-            <div class="menu-row">
-              <span>etc...</span>
-              <span></span>
-            </div>
+        <div class="menu-row">
+          <span class="menu-name">カクテル
+            <small>ジントニック / ソルティドッグ / ピーチツリーフィズ / カシスオレンジ 等</small>
+          </span>
+          <span class="menu-dots"></span>
+          <span class="menu-price">¥750〜</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-name">お任せカクテル
+            <small>ピーチ系 / 紅茶系 / ハーブ系 / グレープフルーツ系 etc...</small>
+          </span>
+          <span class="menu-dots"></span>
+          <span class="menu-price">¥750〜</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-name">ウイスキー
+            <small>デュワーズ / ジョニー・ウォーカー / Makers Mark / グレンリヴェット etc...</small>
+          </span>
+          <span class="menu-dots"></span>
+          <span class="menu-price">¥750〜</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-name">ハイネケン（瓶）</span>
+          <span class="menu-dots"></span>
+          <span class="menu-price">¥800</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-name">焼酎（お茶割・レモンサワー）</span>
+          <span class="menu-dots"></span>
+          <span class="menu-price">¥600〜</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-name">テキーラ</span>
+          <span class="menu-dots"></span>
+          <span class="menu-price">¥500</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-name">etc...</span>
+        </div>
 
-            <h3 class="menu-category mt-4">FOOD</h3>
+        <h3 class="menu-category">FOOD</h3>
 
-            <div class="menu-row">
-              <span>ソーセージ盛り合わせ</span>
-              <span class="menu-price">¥1,000</span>
-            </div>
-            <div class="menu-row">
-              <span>本日のパスタ</span>
-              <span class="menu-price">¥1,000〜</span>
-            </div>
-            <div class="menu-row">
-              <span>etc...</span>
-              <span></span>
-            </div>
-          </div>
+        <div class="menu-row">
+          <span class="menu-name">ソーセージ盛り合わせ</span>
+          <span class="menu-dots"></span>
+          <span class="menu-price">¥1,000</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-name">本日のパスタ</span>
+          <span class="menu-dots"></span>
+          <span class="menu-price">¥1,000〜</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-name">etc...</span>
         </div>
       </div>
+    </section>
 
-      <!-- INFORMATION -->
-      <div class="accordion-item" id="info">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseInfo" aria-expanded="false" aria-controls="collapseInfo">
-            INFORMATION
-          </button>
-        </h2>
-        <div id="collapseInfo" class="accordion-collapse collapse" data-bs-parent="#mainAccordion">
-          <div class="accordion-body">
-            <div class="menu-row">
-              <span>営業時間</span>
-              <span class="text-end">火曜日〜日曜日（20:00〜翌04:00）</span>
+    <!-- INFORMATION -->
+    <section id="info" class="panel">
+      <h2 class="panel-title collapsed" data-bs-toggle="collapse" data-bs-target="#collapseInfo"
+        aria-expanded="false" aria-controls="collapseInfo" role="button">
+        INFORMATION <span class="panel-toggle-icon"></span>
+      </h2>
+      <div class="collapse" id="collapseInfo">
+        <table class="table info-table align-middle mb-0">
+          <tbody>
+            <tr>
+              <th scope="row">営業時間</th>
+              <td>火曜日〜日曜日（20:00〜翌04:00）</td>
+            </tr>
+            <tr>
+              <th scope="row">定休日</th>
+              <td>月曜日</td>
+            </tr>
+            <tr>
+              <th scope="row">住所</th>
+              <td>神奈川県伊勢原市桜台1-1-25<br>アーバンヒルズ2F</td>
+            </tr>
+            <tr>
+              <th scope="row">TEL</th>
+              <td><a href="tel:07038611472" class="tel-link">070-3861-1472</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="panel">
+      <h2 class="panel-title collapsed" data-bs-toggle="collapse" data-bs-target="#collapseGallery"
+        aria-expanded="false" aria-controls="collapseGallery" role="button">
+        GALLERY <span class="panel-toggle-icon"></span>
+      </h2>
+      <div class="collapse" id="collapseGallery">
+        <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="10000">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="写真1"></button>
+            <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="1" aria-label="写真2"></button>
+            <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="2" aria-label="写真3"></button>
+            <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="3" aria-label="写真4"></button>
+            <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="4" aria-label="写真5"></button>
+            <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="5" aria-label="写真6"></button>
+            <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="6" aria-label="写真7"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://raw.githubusercontent.com/sota-furuta/bar-novel/feature-bar-novel-oner-review/images/exterior.jpg" class="d-block gallery-img" alt="店舗外観">
+              <p class="slide-caption">店舗外観 ・ ・ ・</p>
             </div>
-            <div class="menu-row">
-              <span>定休日</span>
-              <span>月曜日</span>
+            <div class="carousel-item">
+              <img src="https://raw.githubusercontent.com/sota-furuta/bar-novel/feature-bar-novel-oner-review/images/interior.jpg" class="d-block gallery-img" alt="店内カウンター">
+              <p class="slide-caption">・ 店内カウンター ・ ・</p>
             </div>
-            <div class="menu-row">
-              <span>住所</span>
-              <span class="text-end">神奈川県伊勢原市桜台1-1-25<br>アーバンヒルズ2F</span>
+            <div class="carousel-item">
+              <img src="https://raw.githubusercontent.com/sota-furuta/bar-novel/feature-bar-novel-oner-review/images/pasta.jpg" class="d-block gallery-img" alt="本日のパスタ">
+              <p class="slide-caption">・ ・ 本日のパスタ ・</p>
             </div>
-            <div class="menu-row">
-              <span>TEL</span>
-              <span><a href="tel:07038611472" class="tel-link">070-3861-1472</a></span>
+            <div class="carousel-item">
+              <img src="https://raw.githubusercontent.com/sota-furuta/bar-novel/feature-bar-novel-oner-review/images/food.jpg" class="d-block gallery-img" alt="ソーセージ盛り合わせ">
+              <p class="slide-caption">・ ・ ・ ソーセージ盛り合わせ</p>
+            </div>
+            <div class="carousel-item">
+              <img src="IMG_8583.jpeg" class="d-block gallery-img" alt="カクテル">
+              <p class="slide-caption">・ ・ カクテル ・</p>
+            </div>
+            <div class="carousel-item">
+              <img src="IMG_8582.jpeg" class="d-block gallery-img" alt="フード（小鉢）">
+              <p class="slide-caption">・ ・ フード ・ ・</p>
+            </div>
+            <div class="carousel-item">
+              <img src="IMG_8584.jpeg" class="d-block gallery-img" alt="おつまみ">
+              <p class="slide-caption">・ おつまみ ・ ・ ・</p>
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- GALLERY -->
-      <div class="accordion-item" id="gallery">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseGallery" aria-expanded="false" aria-controls="collapseGallery">
-            GALLERY
+          <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">前へ</span>
           </button>
-        </h2>
-        <div id="collapseGallery" class="accordion-collapse collapse" data-bs-parent="#mainAccordion">
-          <div class="accordion-body">
-            <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="10000">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="https://raw.githubusercontent.com/sota-furuta/bar-novel/feature-bar-novel-oner-review/images/exterior.jpg" class="d-block gallery-img" alt="店舗外観">
-                  <p class="slide-caption">店舗外観 ・ ・ ・</p>
-                </div>
-                <div class="carousel-item">
-                  <img src="https://raw.githubusercontent.com/sota-furuta/bar-novel/feature-bar-novel-oner-review/images/interior.jpg" class="d-block gallery-img" alt="店内カウンター">
-                  <p class="slide-caption">・ 店内カウンター ・ ・</p>
-                </div>
-                <div class="carousel-item">
-                  <img src="https://raw.githubusercontent.com/sota-furuta/bar-novel/feature-bar-novel-oner-review/images/pasta.jpg" class="d-block gallery-img" alt="本日のパスタ">
-                  <p class="slide-caption">・ ・ 本日のパスタ ・</p>
-                </div>
-                <div class="carousel-item">
-                  <img src="https://raw.githubusercontent.com/sota-furuta/bar-novel/feature-bar-novel-oner-review/images/food.jpg" class="d-block gallery-img" alt="ソーセージ盛り合わせ">
-                  <p class="slide-caption">・ ・ ・ ソーセージ盛り合わせ</p>
-                </div>
-                <div class="carousel-item">
-                  <img src="IMG_8583.jpeg" class="d-block gallery-img" alt="カクテル">
-                  <p class="slide-caption">・ ・ カクテル ・</p>
-                </div>
-                <div class="carousel-item">
-                  <img src="IMG_8582.jpeg" class="d-block gallery-img" alt="フード（小鉢）">
-                  <p class="slide-caption">・ ・ フード ・ ・</p>
-                </div>
-                <div class="carousel-item">
-                  <img src="IMG_8584.jpeg" class="d-block gallery-img" alt="おつまみ">
-                  <p class="slide-caption">・ おつまみ ・ ・ ・</p>
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">前へ</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">次へ</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ACCESS -->
-      <div class="accordion-item" id="access">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseAccess" aria-expanded="false" aria-controls="collapseAccess">
-            ACCESS
+          <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">次へ</span>
           </button>
-        </h2>
-        <div id="collapseAccess" class="accordion-collapse collapse" data-bs-parent="#mainAccordion">
-          <div class="accordion-body text-center">
-            <p class="mb-4">小田急線 伊勢原駅南口より徒歩約1分</p>
-            <a class="btn btn-accent-solid btn-lg" href="https://maps.app.goo.gl/pQygL5VJowjCGWbm6"
-              target="_blank" rel="noopener noreferrer">Google Maps</a>
-          </div>
         </div>
       </div>
+    </section>
 
-      <!-- INSTAGRAM -->
-      <div class="accordion-item" id="instagram">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseInsta" aria-expanded="false" aria-controls="collapseInsta">
-            INSTAGRAM
-          </button>
-        </h2>
-        <div id="collapseInsta" class="accordion-collapse collapse" data-bs-parent="#mainAccordion">
-          <div class="accordion-body text-center">
-            <p class="mb-4">
-              ご予約・お問い合わせは<br>
-              Instagramより承っております
-            </p>
-            <a class="btn btn-accent-solid btn-lg" href="https://instagram.com/isehara.bar.cocktail.novel"
-              target="_blank" rel="noopener noreferrer">Instagramで連絡する</a>
-          </div>
+    <!-- ACCESS -->
+    <section id="access" class="panel">
+      <h2 class="panel-title collapsed" data-bs-toggle="collapse" data-bs-target="#collapseAccess"
+        aria-expanded="false" aria-controls="collapseAccess" role="button">
+        ACCESS <span class="panel-toggle-icon"></span>
+      </h2>
+      <div class="collapse" id="collapseAccess">
+        <div class="text-center">
+          <p class="access-text">
+            小田急線 伊勢原駅南口より徒歩約1分<br>
+            <small>神奈川県伊勢原市桜台1-1-25 アーバンヒルズ2F</small>
+          </p>
+          <a class="btn btn-accent-solid btn-lg" href="https://maps.app.goo.gl/pQygL5VJowjCGWbm6"
+            target="_blank" rel="noopener noreferrer">Google Maps</a>
         </div>
       </div>
+    </section>
 
-    </div>
+    <!-- INSTAGRAM -->
+    <section id="instagram" class="panel">
+      <h2 class="panel-title collapsed" data-bs-toggle="collapse" data-bs-target="#collapseInsta"
+        aria-expanded="false" aria-controls="collapseInsta" role="button">
+        INSTAGRAM <span class="panel-toggle-icon"></span>
+      </h2>
+      <div class="collapse" id="collapseInsta">
+        <div class="text-center">
+          <p class="access-text">
+            ご予約・お問い合わせは<br>
+            Instagramより承っております
+          </p>
+          <a class="btn btn-accent-solid btn-lg" href="https://instagram.com/isehara.bar.cocktail.novel"
+            target="_blank" rel="noopener noreferrer">Instagramで連絡する</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="site-footer text-center">
-    <p class="mb-0">© BAR NOVEL</p>
+  <footer class="site-footer">
+    <p class="footer-brand">BAR NOVEL</p>
+    <nav class="footer-nav">
+      <a href="#menu">Menu</a>
+      <a href="#info">Information</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#access">Access</a>
+    </nav>
+    <p class="footer-copy">© BAR NOVEL</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
