@@ -4,7 +4,7 @@ BAR NOVEL（伊勢原のバー）のホームページを Bootstrap 5.3 で1か�
 元リポジトリ: sota-furuta/bar-novel
 
 ## デザイン
-- 背景色 #0b0a08 のみオーナー版のまま。アクセントはバーらしい真鍮ゴールド（#b08d57〜#d9b98a）に刷新、フォントは Playfair Display + Noto Sans JP
+- カラーパレットはオーナー版ブランチ（feature-bar-novel-oner-review）に合わせた: 背景はゴールドのグラデーション（#c7a678→#e0c18f→#c88b4e）、文字 #3b2a18、差し色 #e0b06a、濃色部分 #0b0a08。フォントは Playfair Display + Noto Sans JP
 - Bootstrap 5.3.8 使用
 - レイアウトは新規構成: ヒーローは左テキスト・右写真（ゴールドのずらし枠＋縦書き装飾）、コンセプト帯、番号付き見出し、スクロールでふわっと表示
 - Information はテーブル、Menu はカード、Gallery はグリッド＋モーダル拡大、Access はボタン2種
