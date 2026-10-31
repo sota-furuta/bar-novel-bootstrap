@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap');
 
-/* カラーとフォントはオーナー要望により元のデザインから変更なし。
-   レイアウトは Bootstrap 5.3 に任せ、ここはテーマの上書きだけを行う */
+/* 背景色 #111111 は元のデザインのまま（オーナー要望）。
+   アクセントはバーらしい真鍮ゴールドに刷新 */
 :root {
   --bg: #111111;
   --text: #f5f5f5;
-  --accent: #8a6846;
-  --border: #292929;
-  --bg-alt: #161616;
+  --gold: #b08d57;
+  --gold-light: #d9b98a;
+  --border: #2b2b2b;
+  --bg-alt: #161513;
   --text-dim: #bdbdbd;
 }
 
@@ -20,7 +21,7 @@ body {
   color: var(--text);
   font-family: "Noto Sans JP", sans-serif;
   line-height: 1.8;
-  padding-top: 69px; /* fixed navbar 分 */
+  padding-top: 69px;
 }
 
 .text-dim {
@@ -47,45 +48,58 @@ body {
 }
 
 .navbar-dark .navbar-nav .nav-link:hover {
-  color: var(--accent);
+  color: var(--gold-light);
 }
 
-/* Buttons（アクセント色） */
+/* Buttons */
 
-.btn-accent {
-  color: var(--accent);
-  border: 1px solid var(--accent);
+.btn-gold {
+  color: var(--gold-light);
+  border: 1px solid var(--gold);
   border-radius: 0;
   transition: all 0.3s ease;
 }
 
-.btn-accent:hover {
-  background: var(--accent);
-  color: #fff;
+.btn-gold:hover {
+  background: var(--gold);
+  color: #111;
 }
 
-.btn-accent-solid {
-  background: var(--accent);
-  border: 1px solid var(--accent);
-  color: #fff;
+.btn-gold-solid {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  border: 1px solid var(--gold);
+  color: #111;
+  font-weight: 500;
   border-radius: 0;
   transition: opacity 0.3s;
 }
 
-.btn-accent-solid:hover {
-  background: var(--accent);
-  color: #fff;
-  opacity: 0.85;
+.btn-gold-solid:hover {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #111;
+  opacity: 0.88;
 }
 
 /* Hero */
 
 .hero {
-  padding: 72px 0 84px;
+  position: relative;
+  padding: 76px 0 88px;
+  overflow: hidden;
+}
+
+.hero-vertical {
+  position: absolute;
+  right: 22px;
+  top: 110px;
+  writing-mode: vertical-rl;
+  letter-spacing: 8px;
+  color: rgba(217, 185, 138, 0.35);
+  font-size: 0.95rem;
 }
 
 .hero-eyebrow {
-  color: var(--accent);
+  color: var(--gold-light);
   letter-spacing: 4px;
   font-size: 0.8rem;
   margin-bottom: 18px;
@@ -97,6 +111,13 @@ body {
   font-weight: 600;
   line-height: 0.95;
   margin-bottom: 26px;
+}
+
+.hero-title-accent {
+  background: linear-gradient(120deg, var(--gold-light), var(--gold) 60%, #8f6f3e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .hero-lead {
@@ -114,7 +135,6 @@ body {
   background: transparent;
 }
 
-/* ヒーロー写真のずらし枠 */
 .hero-frame {
   position: relative;
 }
@@ -123,7 +143,7 @@ body {
   content: "";
   position: absolute;
   inset: 18px -18px -18px 18px;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--gold);
   z-index: 0;
 }
 
@@ -133,6 +153,21 @@ body {
   width: 100%;
   height: 520px;
   object-fit: cover;
+}
+
+/* Concept band */
+
+.concept-band {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 34px 0;
+  background: var(--bg-alt);
+}
+
+.concept-text {
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  letter-spacing: 1px;
 }
 
 /* Sections */
@@ -148,13 +183,13 @@ body {
 
 .section-head {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 16px;
   margin-bottom: 38px;
 }
 
 .section-no {
-  color: var(--accent);
+  color: var(--gold-light);
   font-family: "Playfair Display", serif;
   letter-spacing: 2px;
 }
@@ -163,8 +198,27 @@ body {
   font-family: "Playfair Display", serif;
   font-size: 2rem;
   letter-spacing: 2px;
-  color: var(--accent);
+  color: var(--gold-light);
   margin: 0;
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+/* Scroll reveal */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: none;
 }
 
 /* Information table */
@@ -176,7 +230,7 @@ body {
 }
 
 .table-dark-custom th {
-  color: var(--accent);
+  color: var(--gold-light);
   font-weight: 500;
   white-space: nowrap;
   border-color: var(--border);
@@ -199,7 +253,12 @@ body {
 .menu-card {
   background: var(--bg);
   border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
   border-radius: 0;
+}
+
+.section-alt .menu-card {
+  background: #111111;
 }
 
 .menu-card-title {
@@ -212,7 +271,7 @@ body {
 .menu-price {
   font-family: "Playfair Display", serif;
   font-size: 2.4rem;
-  color: var(--accent);
+  color: var(--gold-light);
   margin-bottom: 10px;
 }
 
@@ -236,7 +295,7 @@ body {
   height: 240px;
   object-fit: cover;
   border: 1px solid var(--border);
-  transition: transform 0.4s ease;
+  transition: transform 0.4s ease, filter 0.4s ease;
 }
 
 .gallery-img-lg {
@@ -245,11 +304,12 @@ body {
 
 .gallery-btn:hover .gallery-img {
   transform: scale(1.03);
+  filter: brightness(1.08);
 }
 
 .modal-photo {
   background: var(--bg);
-  border: 1px solid var(--border);
+  border: 1px solid var(--gold);
   border-radius: 0;
 }
 
@@ -264,6 +324,17 @@ body {
   font-family: "Playfair Display", serif;
   letter-spacing: 3px;
   font-size: 1.3rem;
+}
+
+.footer-nav a {
+  color: var(--text-dim);
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 0.92rem;
+}
+
+.footer-nav a:hover {
+  color: var(--gold-light);
 }
 
 .footer-copy {

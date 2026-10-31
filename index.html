@@ -10,7 +10,7 @@
   <meta name="description"
     content="伊勢原駅近くのBAR NOVEL。カクテルやウイスキーを楽しめる落ち着いた空間で、特別な夜のひとときを。">
 
-  <!-- Bootstrap 5.3 -->
+  <!-- Bootstrap 5.3.8 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -34,22 +34,22 @@
           <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
           <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
           <li class="nav-item"><a class="nav-link" href="#access">Access</a></li>
-          <li class="nav-item ms-md-3">
-            <a class="btn btn-accent btn-sm px-3" href="https://instagram.com/isehara.bar.cocktail.novel"
-              target="_blank" rel="noopener noreferrer">Instagram</a>
+          <li class="nav-item ms-md-3 mt-2 mt-md-0">
+            <a class="btn btn-gold btn-sm px-3" href="tel:07038611472">電話する</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- ヒーロー: 左テキスト / 右写真 -->
+  <!-- ヒーロー -->
   <header class="hero" id="top">
+    <span class="hero-vertical d-none d-md-block">大人の隠れ家</span>
     <div class="container">
       <div class="row align-items-center g-5">
         <div class="col-md-6">
           <p class="hero-eyebrow">ISEHARA — NIGHT BAR</p>
-          <h1 class="hero-title">BAR<br>NOVEL</h1>
+          <h1 class="hero-title">BAR<br><span class="hero-title-accent">NOVEL</span></h1>
           <p class="hero-lead">
             落ち着いた空間で、お酒と会話を楽しむ<br>
             大人の隠れ家バー。
@@ -59,7 +59,11 @@
             <li class="list-inline-item"><span class="badge badge-outline">月曜定休</span></li>
             <li class="list-inline-item"><span class="badge badge-outline">伊勢原駅 徒歩1分</span></li>
           </ul>
-          <a href="#access" class="btn btn-accent-solid btn-lg mt-2">アクセスを見る</a>
+          <div class="d-flex flex-wrap gap-3 mt-2">
+            <a href="#access" class="btn btn-gold-solid btn-lg">アクセスを見る</a>
+            <a href="https://instagram.com/isehara.bar.cocktail.novel" target="_blank"
+              rel="noopener noreferrer" class="btn btn-gold btn-lg">Instagram</a>
+          </div>
         </div>
         <div class="col-md-6">
           <figure class="hero-frame mb-0">
@@ -70,11 +74,22 @@
     </div>
   </header>
 
+  <!-- コンセプト帯 -->
+  <section class="concept-band">
+    <div class="container text-center">
+      <p class="concept-text mb-0">
+        一日の終わりに、静かにグラスを傾ける場所。<br class="d-md-none">
+        駅から1分、伊勢原の夜に寄り添う一軒です。
+      </p>
+    </div>
+  </section>
+
   <!-- About / Information -->
-  <section id="about" class="container section-pad">
+  <section id="about" class="container section-pad reveal">
     <div class="section-head">
       <span class="section-no">01</span>
       <h2>INFORMATION</h2>
+      <span class="section-line"></span>
     </div>
 
     <div class="row g-4 align-items-stretch">
@@ -108,10 +123,11 @@
 
   <!-- Menu -->
   <section id="menu" class="section-alt">
-    <div class="container section-pad">
+    <div class="container section-pad reveal">
       <div class="section-head">
         <span class="section-no">02</span>
         <h2>MENU</h2>
+        <span class="section-line"></span>
       </div>
 
       <div class="row g-4">
@@ -137,11 +153,12 @@
     </div>
   </section>
 
-  <!-- Gallery: グリッド＋モーダル拡大 -->
-  <section id="gallery" class="container section-pad">
+  <!-- Gallery -->
+  <section id="gallery" class="container section-pad reveal">
     <div class="section-head">
       <span class="section-no">03</span>
       <h2>GALLERY</h2>
+      <span class="section-line"></span>
     </div>
 
     <div class="row g-3">
@@ -175,19 +192,20 @@
 
   <!-- Access -->
   <section id="access" class="section-alt">
-    <div class="container section-pad">
+    <div class="container section-pad reveal">
       <div class="section-head">
         <span class="section-no">04</span>
         <h2>ACCESS</h2>
+        <span class="section-line"></span>
       </div>
 
       <p class="fs-5 mb-1">小田急線 伊勢原駅南口より徒歩約1分</p>
       <p class="text-dim mb-4">神奈川県伊勢原市桜台1-1-25 アーバンヒルズ2F</p>
 
       <div class="d-flex flex-wrap gap-3">
-        <a class="btn btn-accent-solid btn-lg" href="https://maps.app.goo.gl/84LB9yJPqFdLJkiR6?g_st=im"
+        <a class="btn btn-gold-solid btn-lg" href="https://maps.app.goo.gl/84LB9yJPqFdLJkiR6?g_st=im"
           target="_blank" rel="noopener noreferrer">Google Mapsで開く</a>
-        <a class="btn btn-accent btn-lg" href="https://instagram.com/isehara.bar.cocktail.novel"
+        <a class="btn btn-gold btn-lg" href="https://instagram.com/isehara.bar.cocktail.novel"
           target="_blank" rel="noopener noreferrer">Instagramを見る</a>
       </div>
     </div>
@@ -195,6 +213,12 @@
 
   <footer class="site-footer text-center">
     <p class="footer-brand mb-1">BAR NOVEL</p>
+    <nav class="footer-nav mb-2">
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#access">Access</a>
+    </nav>
     <p class="footer-copy mb-0">© BAR NOVEL</p>
   </footer>
 
@@ -241,6 +265,18 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // スクロールでふわっと表示
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("revealed");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+  </script>
 
 </body>
 
