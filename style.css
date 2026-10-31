@@ -681,3 +681,93 @@ footer p {
   border: 1px solid var(--border);
   display: block;
 }
+
+/* ===== ポチ感覚カラー調整（アコーディオン展開時） pochiブランチ =====
+   ポチ版の配色感覚: 見出しは温かいクリーム、価格とラベルはコパー、
+   説明文は一段落としたウォームグレーで階層を作る。 */
+
+:root {
+  --pochi-copper: #d08a4a;
+  --pochi-copper-soft: #e8ab6d;
+  --pochi-cream: #f7ecd7;
+  --pochi-warm-gray: #bfae8f;
+}
+
+/* 開いたパネルは枠と影で「開いている」ことを示す */
+.panel:has(.panel-collapse.show) {
+  border-color: rgba(208, 138, 74, 0.55);
+  box-shadow: 0 14px 38px rgba(43, 24, 8, 0.35);
+}
+
+/* 開いた見出しはコパー寄りに温かく */
+.panel-btn:not(.collapsed) {
+  color: var(--pochi-copper-soft);
+}
+
+/* メニュー: 名前=クリーム / 説明=ウォームグレー / 価格=コパー */
+.pochi-pane .menu-name,
+.panel-collapse .menu-name {
+  color: var(--pochi-cream);
+}
+
+.menu-name small {
+  color: var(--pochi-warm-gray);
+}
+
+.menu-price {
+  color: var(--pochi-copper-soft);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.menu-item {
+  border-bottom-color: rgba(208, 138, 74, 0.28);
+}
+
+/* Information: ラベル=コパー / 値=クリーム */
+.info-item span:first-child {
+  color: var(--pochi-copper-soft);
+}
+
+.info-item span:last-child {
+  color: var(--pochi-cream);
+}
+
+.info-item {
+  border-bottom-color: rgba(208, 138, 74, 0.28);
+}
+
+/* Gallery キャプション */
+.slide-caption {
+  color: var(--pochi-cream);
+}
+
+.caption-dots {
+  color: #9a8563;
+}
+
+/* Access / Instagram 本文とボタン */
+.access p,
+.panel-center p {
+  color: var(--pochi-cream);
+}
+
+.button {
+  color: var(--pochi-copper-soft);
+  border-color: var(--pochi-copper);
+}
+
+.button:hover {
+  background: var(--pochi-copper);
+  color: #17110a;
+}
+
+/* タブ（ポチ版メニューUI）の非アクティブ文字を読みやすく */
+.pochi-tab {
+  color: #d9c49a;
+}
+
+/* テキスト選択色もコパーに */
+::selection {
+  background: rgba(208, 138, 74, 0.45);
+}
