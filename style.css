@@ -1,72 +1,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap');
 
-/* ベースページ（sota-furuta.github.io/bar-novel / feature-bar-novel-oner-review）の
-   デザイン・数値をそのままに、実装だけ Bootstrap 5.3.8 に置き換えたもの。
-   背景は琥珀色グラデーション（amber-color ブランチ） */
+/* ベース: feature-bar-novel-oner-review（色・コピー・メニュー・写真はそのまま）
+   --bg #0b0a08 / --accent #e0b06a / --border #5a3a1d / クリーム #f2e3c6
+   UI は Bootstrap 5.3.8 で刷新（PC・スマホ両対応） */
 :root {
   --bg: #0b0a08;
-  --text: #d9c9b3;
-  --accent: #d4a15a;
-  --border: #4d3117;
-  --card: rgba(20, 14, 10, 0.75);
+  --text: #f8f3eb;
+  --accent: #e0b06a;
+  --accent-soft: rgba(224, 176, 106, 0.35);
+  --border: #5a3a1d;
   --cream: #f2e3c6;
+  --cream-dim: #d9c9b3;
+  --panel: rgba(18, 12, 8, 0.88);
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 84px;
 }
 
 body {
-  background: radial-gradient(ellipse at top,
-      #a86f30 0%,
-      #7f4d1f 20%,
-      #563215 40%,
-      #321d0d 65%,
-      #18100a 85%,
-      #0b0a08 100%);
+  background: linear-gradient(180deg,
+      #c7a678 60%,
+      #e0c18f 60%,
+      #c7a678 60%,
+      #c88b4e 100%);
   background-attachment: fixed;
   color: var(--text);
   font-family: "Noto Sans JP", sans-serif;
   line-height: 1.8;
   min-height: 100vh;
+  padding-top: 70px;
 }
 
-/* Header（ベースページ: 固定・濃色・ロゴのみ） */
+.text-dim {
+  color: var(--cream-dim);
+}
+
+/* Navbar */
 
 .site-navbar {
   background: rgba(11, 10, 8, 0.92);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid #4d3117;
-  padding: 0;
-}
-
-.header-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 16px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .logo {
-  color: var(--cream);
   font-family: "Playfair Display", serif;
   font-size: 2rem;
   letter-spacing: 3px;
-  padding: 0;
-  margin: 0;
+  color: var(--cream) !important;
 }
 
-.logo:hover {
-  color: var(--cream);
-}
-
-/* ページ内リンク（UI改善で追加） */
 .navbar-dark .navbar-nav .nav-link {
-  color: var(--text);
+  color: var(--cream-dim);
   transition: color 0.3s;
-  padding: 8px 12px;
 }
 
 .navbar-dark .navbar-nav .nav-link:hover,
@@ -75,7 +63,279 @@ body {
 }
 
 .navbar-toggler {
-  border-color: rgba(212, 161, 90, 0.5);
+  border-color: rgba(224, 176, 106, 0.5);
+}
+
+/* Buttons */
+
+.btn-accent {
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  background: rgba(224, 176, 106, 0.08);
+  border-radius: 0;
+  transition: all 0.3s ease;
+}
+
+.btn-accent:hover {
+  background: var(--accent);
+  color: #111;
+}
+
+.btn-accent-solid {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: #111;
+  font-weight: 500;
+  border-radius: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-accent-solid:hover {
+  background: var(--accent);
+  color: #111;
+  opacity: 0.88;
+}
+
+.btn-outline-cream {
+  border: 1px solid rgba(242, 227, 198, 0.7);
+  color: var(--cream);
+  border-radius: 0;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-cream:hover {
+  background: rgba(242, 227, 198, 0.15);
+  color: var(--cream);
+}
+
+/* Hero */
+
+.hero {
+  position: relative;
+  min-height: 78vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 56px 0 64px;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+    url("https://raw.githubusercontent.com/sota-furuta/bar-novel/feature-bar-novel-oner-review/images/interior.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+
+.hero-inner {
+  color: var(--cream);
+}
+
+.hero-copy {
+  font-size: 1.5rem;
+  line-height: 2;
+  margin-bottom: 26px;
+  color: var(--cream);
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.5s ease forwards;
+}
+
+.hero-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(4rem, 11vw, 7rem);
+  font-weight: 600;
+  line-height: 0.9;
+  color: var(--cream);
+  text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
+  margin-bottom: 26px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 2s ease forwards;
+  animation-delay: 0.8s;
+}
+
+.hero-badges {
+  margin-bottom: 26px;
+  opacity: 0;
+  animation: fadeUp 1.2s ease forwards;
+  animation-delay: 1.4s;
+}
+
+.badge-dark {
+  background: rgba(11, 10, 8, 0.65);
+  backdrop-filter: blur(3px);
+  border: 1px solid var(--accent-soft);
+  color: var(--cream);
+  font-weight: 400;
+  padding: 9px 15px;
+  border-radius: 999px;
+  letter-spacing: 1px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 1.2s ease forwards;
+  animation-delay: 1.8s;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sections */
+
+.page-main {
+  max-width: 1000px;
+}
+
+.section {
+  padding: 54px 0 6px;
+  scroll-margin-top: 84px;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.section-no {
+  color: #7a5320;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+.section-head h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: #2e1f10;
+  margin: 0;
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(90, 58, 29, 0.7), transparent);
+}
+
+/* Scroll reveal */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Cards（濃色パネル） */
+
+.menu-card,
+.info-card {
+  background: var(--panel);
+  backdrop-filter: blur(3px);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  box-shadow: 0 12px 32px rgba(59, 42, 24, 0.28);
+  color: var(--cream);
+}
+
+.menu-card .card-body,
+.info-card .card-body {
+  padding: 26px 28px;
+}
+
+.menu-category {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  color: var(--accent);
+  border-left: 3px solid var(--accent);
+  padding-left: 12px;
+  margin-bottom: 14px;
+}
+
+/* Menu rows */
+
+.menu-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(224, 176, 106, 0.18);
+}
+
+.menu-name {
+  color: var(--accent);
+  font-weight: 500;
+  text-align: left;
+}
+
+.menu-name small {
+  display: block;
+  margin-top: 4px;
+  color: var(--cream);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.menu-dots {
+  flex: 1;
+  border-bottom: 1px dotted rgba(224, 176, 106, 0.4);
+  transform: translateY(-4px);
+}
+
+.menu-price {
+  color: var(--cream);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.menu-photo {
+  margin: 20px 0 0;
+}
+
+.menu-photo img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border: 1px solid rgba(224, 176, 106, 0.3);
+}
+
+/* Information */
+
+.info-table {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--cream);
+  border-color: rgba(224, 176, 106, 0.25);
+}
+
+.info-table th {
+  color: var(--accent);
+  font-weight: 500;
+  white-space: nowrap;
+  width: 130px;
+  border-color: rgba(224, 176, 106, 0.25);
+}
+
+.info-table td {
+  border-color: rgba(224, 176, 106, 0.25);
 }
 
 .tel-link {
@@ -87,23 +347,128 @@ body {
   color: var(--accent);
 }
 
-/* ギャラリーのインジケーター（UI改善で追加） */
-#galleryCarousel {
-  padding-bottom: 36px;
+.access-lead {
+  color: var(--cream);
+  font-weight: 500;
+  font-size: 1.08rem;
 }
 
-#galleryCarousel .carousel-indicators {
+/* Gallery */
+
+.gallery-btn {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--border);
+  background: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.gallery-btn img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.gallery-btn span {
+  position: absolute;
+  left: 0;
+  right: 0;
   bottom: 0;
-  margin-bottom: 4px;
+  padding: 22px 12px 8px;
+  text-align: left;
+  color: var(--cream);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  background: linear-gradient(transparent, rgba(11, 10, 8, 0.75));
 }
 
-#galleryCarousel .carousel-indicators [data-bs-target] {
-  background-color: var(--accent);
-  width: 26px;
-  height: 3px;
+.gallery-btn:hover img {
+  transform: scale(1.04);
+  filter: brightness(1.07);
 }
 
-/* スマホ用 下部固定バー（UI改善で追加） */
+.modal-photo {
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  border-radius: 0;
+}
+
+.modal-caption {
+  color: var(--accent);
+  font-family: "Playfair Display", serif;
+  letter-spacing: 2px;
+}
+
+/* Instagram band */
+
+.insta-band {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 32px rgba(59, 42, 24, 0.28);
+  text-align: center;
+  padding: 44px 24px;
+  margin-bottom: 54px;
+}
+
+.insta-title {
+  font-family: "Playfair Display", serif;
+  letter-spacing: 3px;
+  color: var(--cream);
+  font-size: 1.7rem;
+  margin-bottom: 14px;
+}
+
+.insta-text {
+  color: var(--cream);
+  font-weight: 500;
+  margin-bottom: 22px;
+}
+
+/* Footer */
+
+.site-footer {
+  text-align: center;
+  padding: 30px 24px 42px;
+  border-top: 1px solid var(--border);
+  color: #ddd3c4;
+}
+
+.footer-brand {
+  font-family: "Playfair Display", serif;
+  letter-spacing: 3px;
+  font-size: 1.3rem;
+  color: #2e1f10;
+  margin-bottom: 8px;
+}
+
+.footer-nav {
+  margin-bottom: 10px;
+}
+
+.footer-nav a {
+  color: #4a3517;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 0.92rem;
+}
+
+.footer-nav a:hover {
+  color: #2e1f10;
+}
+
+.footer-copy {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #4a3517;
+}
+
+/* Mobile CTA / to-top */
+
 .mobile-cta {
   position: fixed;
   left: 0;
@@ -126,18 +491,17 @@ body {
 }
 
 .mobile-cta a + a {
-  border-left: 1px solid rgba(212, 161, 90, 0.25);
+  border-left: 1px solid rgba(224, 176, 106, 0.25);
 }
 
 .mobile-cta a:active {
-  background: rgba(212, 161, 90, 0.15);
+  background: rgba(224, 176, 106, 0.15);
 }
 
-/* トップへ戻る（UI改善で追加） */
 .to-top {
   position: fixed;
   right: 16px;
-  bottom: 84px;
+  bottom: 24px;
   z-index: 1030;
   width: 46px;
   height: 46px;
@@ -156,399 +520,78 @@ body {
   pointer-events: auto;
 }
 
-@media (min-width: 768px) {
-  .to-top {
-    bottom: 24px;
-  }
-}
+/* ============ スマホ版（〜767px） ============ */
 
-/* Hero（ベースページ: 65vh・左下・影付き・遅延フェード） */
-
-.hero {
-  position: relative;
-  height: 65vh;
-  margin-top: 70px;
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-    url("https://raw.githubusercontent.com/sota-furuta/bar-novel/feature-bar-novel-oner-review/images/interior.jpg");
-  background-size: cover;
-  background-position: center center;
-}
-
-.hero-overlay {
-  position: absolute;
-  left: 5%;
-  bottom: 8%;
-  color: var(--cream);
-}
-
-.hero-copy {
-  font-size: 1.5rem;
-  line-height: 2;
-  margin-bottom: 30px;
-  color: var(--cream);
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1.5s ease forwards;
-}
-
-.hero-title {
-  font-family: "Playfair Display", serif;
-  font-size: 7rem;
-  font-weight: 600;
-  line-height: 0.9;
-  color: var(--cream);
-  text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
-  margin: 0;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 2s ease forwards;
-  animation-delay: 1.8s;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Sections / Panels（ベースページ details: 最大700px・濃色半透明・中央見出し） */
-
-.sections {
-  padding: 10px 12px;
-}
-
-.panel {
-  background: var(--card);
-  margin: 0 auto 12px;
-  border: 1px solid var(--border);
-  backdrop-filter: blur(3px);
-  padding: 18px;
-  max-width: 700px;
-  overflow: hidden;
-  scroll-margin-top: 84px;
-}
-
-.panel-center {
-  text-align: center;
-}
-
-.panel-title {
-  cursor: pointer;
-  font-family: "Playfair Display", serif;
-  font-size: 1.6rem;
-  font-weight: 500;
-  color: var(--cream);
-  text-align: center;
-  margin: 0;
-  position: relative;
-  letter-spacing: 1px;
-}
-
-.panel-title::after {
-  content: "+";
-  position: absolute;
-  right: 2px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: "Noto Sans JP", sans-serif;
-}
-
-.panel-title:not(.collapsed)::after {
-  content: "−";
-}
-
-.panel-collapse {
-  padding-top: 14px;
-}
-
-/* Menu（ベースページ: 品名アクセント・価格クリーム・細罫） */
-
-.menu-category {
-  margin-top: 28px;
-  margin-bottom: 12px;
-  font-family: "Playfair Display", serif;
-  font-size: 1.5rem;
-  letter-spacing: 2px;
-  color: var(--accent);
-  border-left: 3px solid var(--accent);
-  padding-left: 12px;
-}
-
-.panel-collapse .menu-category:first-child {
-  margin-top: 0;
-}
-
-.menu-item {
-  display: flex;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(212, 161, 90, 0.25);
-  align-items: flex-start;
-}
-
-.menu-name {
-  text-align: left;
-  flex: 1;
-  color: var(--accent);
-  font-weight: 500;
-}
-
-.menu-name small {
-  display: block;
-  margin-top: 4px;
-  color: var(--cream);
-  font-size: 0.75rem;
-  line-height: 1.4;
-  font-weight: 400;
-}
-
-.menu-price {
-  color: var(--cream);
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-/* Information（ベースページ: ラベルアクセント・値クリーム） */
-
-.info-item {
-  display: flex;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(212, 161, 90, 0.25);
-  align-items: start;
-}
-
-.info-item span:first-child {
-  color: var(--accent);
-  font-weight: 500;
-  width: 40%;
-  max-width: 280px;
-  text-align: left;
-  flex-shrink: 0;
-}
-
-.info-item span:last-child {
-  color: var(--cream);
-  font-weight: 500;
-  text-align: left;
-}
-
-/* Gallery（ベースページ: 幅50%・高さ500px・contain・四角ボタン） */
-
-.slide {
-  width: 50%;
-  height: 500px;
-  object-fit: contain;
-  margin: 0 auto;
-  display: block;
-  border-bottom: 1px solid rgba(212, 161, 90, 0.25);
-}
-
-.slide-caption {
-  margin: 12px auto;
-  width: 50%;
-  text-align: center;
-  color: #e6d7c2;
-  font-size: 0.95rem;
-  letter-spacing: 2px;
-  background: rgba(25, 25, 25, 0.25);
-  padding: 2px 0;
-}
-
-.caption-dots {
-  color: gray;
-}
-
-.slider-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  font-size: 1.5rem;
-  opacity: 1;
-  border: none;
-  z-index: 10;
-}
-
-.slider-btn:hover {
-  background: rgba(0, 0, 0, 0.8);
-  opacity: 1;
-  color: white;
-}
-
-.carousel-control-prev.slider-btn {
-  left: 10px;
-}
-
-.carousel-control-next.slider-btn {
-  right: 10px;
-}
-
-/* Access & Instagram（ベースページ: 本文クリーム・最大320px中央） */
-
-.access p,
-.panel-center p {
-  color: var(--cream);
-  font-weight: 500;
-  max-width: 320px;
-  margin: 0 auto 16px;
-  text-align: center;
-}
-
-/* Buttons（ベースページ .button） */
-
-.button {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 12px 28px;
-  min-width: 180px;
-  text-align: center;
-  color: var(--accent);
-  border: 1px solid var(--accent);
-  background: rgba(212, 161, 90, 0.08);
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.button:hover {
-  background: var(--accent);
-  color: #111;
-}
-
-/* Footer（ベースページ） */
-
-footer {
-  text-align: center;
-  padding: 24px;
-  border-top: 1px solid var(--border);
-  color: #ddd3c4;
-}
-
-footer p {
-  margin: 0;
-}
-
-/* Responsive（ベースページのスマホ版の数値に合わせた） */
-
-@media (max-width: 768px) {
-  .sections {
-    padding: 12px;
-  }
-
-  .header-inner {
-    gap: 10px;
-  }
-
+@media (max-width: 767.98px) {
   body {
-    padding-bottom: 56px; /* 下部固定バー分 */
+    padding-bottom: 58px;
   }
 
   .logo {
     font-size: 1.6rem;
   }
 
-  .button {
-    margin-top: 0;
-    min-width: 120px;
-  }
-
   .hero {
-    height: 55vh;
+    min-height: 62vh;
+    padding: 40px 0 48px;
   }
 
   .hero-copy {
-    font-size: 1rem;
-    line-height: 1.8;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    margin-bottom: 18px;
   }
 
   .hero-title {
-    font-size: 5rem;
+    margin-bottom: 20px;
   }
 
-  .hero-overlay {
-    left: 6%;
-    bottom: 5%;
+  .hero-badges {
+    margin-bottom: 20px;
   }
 
-  /* アコーディオン */
-  .panel {
-    padding: 0;
-    margin-bottom: 12px;
+  .hero-actions .btn {
+    flex: 1;
+    min-width: 0;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 
-  .panel-title {
-    min-height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.8rem;
+  .section {
+    padding-top: 40px;
   }
 
-  .panel-title::after {
-    right: 16px;
+  .section-head h2 {
+    font-size: 1.6rem;
   }
 
-  .panel-collapse {
-    padding: 0 12px 12px;
+  .menu-card .card-body,
+  .info-card .card-body {
+    padding: 20px 18px;
   }
 
-  /* MENU */
   .menu-name {
     flex: 1;
-    padding-left: 35px;
   }
 
   .menu-price {
-    width: 70px;
     flex-shrink: 0;
-    text-align: left;
-    margin-left: 15px;
   }
 
-  .menu-name small {
-    margin-top: 2px;
+  .info-table th {
+    width: 92px;
   }
 
-  /* INFORMATION */
-  .info-item span:first-child {
-    width: 35%;
+  .gallery-btn img {
+    height: 160px;
   }
 
-  .info-item span:last-child {
-    flex: 1;
+  .insta-band {
+    padding: 34px 18px;
+    margin-bottom: 40px;
   }
 
-  /* GALLERY */
-  .slide {
-    width: 80%;
-    height: 240px;
-    padding-bottom: 10px;
-    object-fit: contain;
-  }
-
-  .slide-caption {
-    font-size: 0.85rem;
-    margin-bottom: 20px;
-  }
-
-  .slider-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1.1rem;
-  }
-
-  /* ACCESS / INSTAGRAM */
-  #access .button,
-  #instagram .button {
-    margin-bottom: 20px;
+  .to-top {
+    bottom: 76px;
   }
 }
