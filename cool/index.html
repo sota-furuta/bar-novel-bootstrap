@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BAR NOVEL | 伊勢原駅南口徒歩1分のバー</title>
+<meta name="description" content="伊勢原駅南口徒歩1分。女性一人でも気軽に立ち寄れる、会話とお酒を楽しむ居心地の良い空間。20:00〜翌04:00、月曜定休。">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0d0b09; --ink2:#14100c; --gold:#d9a45b; --gold2:#f0cd8d;
+    --cream:#f4ead8; --cream-dim:rgba(244,234,216,.62); --line:rgba(217,164,91,.28);
+  }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--ink); color:var(--cream); font-family:"Noto Sans JP",sans-serif; overflow-x:hidden; }
+  ::selection{ background:var(--gold); color:#171106; }
+
+  /* ---------- NAV ---------- */
+  .navbar-novel{
+    background:rgba(13,11,9,.55); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(217,164,91,.15);
+  }
+  .navbar-novel .navbar-brand{ font-family:"Playfair Display",serif; font-weight:900; letter-spacing:.35em; color:var(--cream); font-size:1.05rem; }
+  .navbar-novel .navbar-brand span{ color:var(--gold); }
+  .navbar-novel .nav-link{ color:var(--cream-dim); letter-spacing:.25em; font-size:.78rem; margin:0 .7rem; transition:color .3s; }
+  .navbar-novel .nav-link:hover, .navbar-novel .nav-link.active{ color:var(--gold2); }
+  .btn-gold{
+    --bs-btn-bg:var(--gold); --bs-btn-border-color:var(--gold); --bs-btn-color:#1a1206;
+    --bs-btn-hover-bg:var(--gold2); --bs-btn-hover-border-color:var(--gold2); --bs-btn-hover-color:#1a1206;
+    font-weight:600; letter-spacing:.15em; border-radius:999px; padding:.55rem 1.5rem;
+  }
+  .btn-ghost{
+    --bs-btn-bg:transparent; --bs-btn-border-color:rgba(244,234,216,.45); --bs-btn-color:var(--cream);
+    --bs-btn-hover-bg:rgba(244,234,216,.1); --bs-btn-hover-border-color:var(--cream); --bs-btn-hover-color:#fff;
+    letter-spacing:.15em; border-radius:999px; padding:.55rem 1.5rem;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{ position:relative; min-height:100svh; display:flex; align-items:flex-end; overflow:hidden; }
+  .hero-bg{
+    position:absolute; inset:0;
+    background:url("https://raw.githubusercontent.com/sota-furuta/bar-novel/feature-bar-novel-oner-review/images/interior.jpg") center/cover no-repeat;
+    transform:scale(1.12); animation:heroZoom 14s ease-out forwards;
+  }
+  @keyframes heroZoom{ to{ transform:scale(1); } }
+  .hero-shade{ position:absolute; inset:0; background:
+      linear-gradient(180deg, rgba(13,11,9,.55) 0%, rgba(13,11,9,.15) 40%, rgba(13,11,9,.92) 88%, var(--ink) 100%),
+      radial-gradient(70% 55% at 30% 65%, rgba(217,164,91,.20), transparent 70%); }
+  .hero-inner{ position:relative; z-index:2; padding:7rem 0 4.5rem; width:100%; }
+  .hero-kicker{ letter-spacing:.5em; font-size:.78rem; color:var(--gold2); text-transform:uppercase; }
+  .hero-copy{ font-family:"Noto Serif JP",serif; font-size:clamp(1rem,2.6vw,1.3rem); line-height:2.1; color:var(--cream); text-shadow:0 2px 18px rgba(0,0,0,.6); }
+  .hero-title{
+    font-family:"Playfair Display",serif; font-weight:900; line-height:.92;
+    font-size:clamp(4.2rem,17vw,13.5rem); letter-spacing:.01em; color:var(--cream);
+    text-shadow:0 10px 50px rgba(0,0,0,.55);
+  }
+  .hero-title .accent{ color:transparent; -webkit-text-stroke:2px var(--gold); }
+  .hero-meta{ display:flex; flex-wrap:wrap; gap:.6rem; }
+  .hero-meta .chip{
+    border:1px solid var(--line); color:var(--cream); border-radius:999px; padding:.42rem 1.05rem;
+    font-size:.82rem; letter-spacing:.12em; background:rgba(13,11,9,.45); backdrop-filter:blur(6px);
+  }
+  .hero-meta .chip b{ color:var(--gold2); font-weight:600; }
+  .scroll-hint{ position:absolute; right:2rem; bottom:2rem; z-index:2; writing-mode:vertical-rl; letter-spacing:.4em; font-size:.7rem; color:var(--cream-dim); }
+  .scroll-hint::after{ content:""; display:block; width:1px; height:64px; margin:12px auto 0; background:linear-gradient(var(--gold),transparent); animation:drip 2.2s ease-in-out infinite; }
+  @keyframes drip{ 0%{ transform:scaleY(0); transform-origin:top; } 55%{ transform:scaleY(1); transform-origin:top; } 100%{ opacity:0; } }
+  .fade-up{ opacity:0; transform:translateY(26px); animation:fadeUp 1s ease forwards; }
+  @keyframes fadeUp{ to{ opacity:1; transform:none; } }
+  .d1{ animation-delay:.15s } .d2{ animation-delay:.35s } .d3{ animation-delay:.55s } .d4{ animation-delay:.8s } .d5{ animation-delay:1.05s }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); overflow:hidden; background:var(--ink2); }
+  .marquee-track{ display:flex; gap:3.5rem; width:max-content; padding:.85rem 0; animation:marquee 30s linear infinite; }
+  .marquee-track span{ font-family:"Playfair Display",serif; letter-spacing:.35em; font-size:.85rem; color:var(--gold2); white-space:nowrap; }
+  .marquee-track span i{ color:var(--cream-dim); font-style:normal; margin-right:3.5rem; }
+  @keyframes marquee{ to{ transform:translateX(-50%); } }
+
+  /* ---------- SECTIONS ---------- */
+  section.blk{ padding:6.5rem 0; position:relative; }
+  .sec-head{ margin-bottom:3rem; }
+  .sec-index{ font-family:"Playfair Display",serif; color:var(--gold); letter-spacing:.3em; font-size:.85rem; }
+  .sec-title{ font-family:"Playfair Display",serif; font-weight:700; font-size:clamp(2.2rem,6vw,3.6rem); letter-spacing:.06em; line-height:1.1; }
+  .sec-sub{ color:var(--cream-dim); font-family:"Noto Serif JP",serif; letter-spacing:.14em; }
+  .reveal{ opacity:0; transform:translateY(34px); transition:opacity .9s ease, transform .9s ease; }
+  .reveal.on{ opacity:1; transform:none; }
+
+  /* ---------- MENU ---------- */
+  .menu-card{ background:linear-gradient(160deg, rgba(217,164,91,.09), rgba(255,255,255,.02) 45%); border:1px solid var(--line); border-radius:20px; padding:2.2rem; height:100%; }
+  .menu-card h3{ font-family:"Playfair Display",serif; letter-spacing:.3em; color:var(--gold2); font-size:1.15rem; margin-bottom:1.6rem; }
+  .mi{ display:flex; align-items:baseline; gap:.7rem; padding:.68rem 0; border-bottom:1px dashed rgba(244,234,216,.10); }
+  .mi:last-child{ border-bottom:none; }
+  .mi .nm{ font-family:"Noto Serif JP",serif; font-size:1.02rem; }
+  .mi .nt{ color:var(--cream-dim); font-size:.8rem; display:block; margin-top:.15rem; }
+  .mi .dots{ flex:1; border-bottom:1px dotted rgba(217,164,91,.45); transform:translateY(-4px); }
+  .mi .pr{ font-family:"Playfair Display",serif; color:var(--gold2); font-size:1.08rem; white-space:nowrap; }
+  .menu-photo{ border-radius:20px; overflow:hidden; border:1px solid var(--line); height:100%; min-height:280px; }
+  .menu-photo img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform 1.2s ease; }
+  .menu-photo:hover img{ transform:scale(1.06); }
+
+  /* ---------- GALLERY ---------- */
+  .g-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .g-item{ position:relative; border-radius:16px; overflow:hidden; border:1px solid var(--line); cursor:pointer; }
+  .g-item img{ width:100%; height:100%; object-fit:cover; display:block; aspect-ratio:4/5; transition:transform 1s ease, filter .6s; }
+  .g-item:hover img{ transform:scale(1.07); }
+  .g-item figcaption{
+    position:absolute; left:0; right:0; bottom:0; padding:2.2rem 1rem .8rem;
+    background:linear-gradient(transparent, rgba(10,8,6,.85)); font-family:"Noto Serif JP",serif; letter-spacing:.18em; font-size:.92rem;
+  }
+  .g-item.big{ grid-column:span 2; } .g-item.big img{ aspect-ratio:auto; height:100%; }
+  @media (max-width:767.98px){ .g-grid{ grid-template-columns:repeat(2,1fr); } .g-item.big{ grid-column:span 2; } .g-item.big img{ aspect-ratio:16/10; } }
+
+  /* ---------- INFO / ACCESS ---------- */
+  .info-table{ width:100%; }
+  .info-table th,.info-table td{ padding:.95rem .4rem; border-bottom:1px solid rgba(244,234,216,.10); vertical-align:top; }
+  .info-table th{ color:var(--gold2); font-weight:500; letter-spacing:.2em; font-size:.85rem; width:34%; white-space:nowrap; }
+  .info-table td{ font-family:"Noto Serif JP",serif; }
+  .access-card{ background:linear-gradient(160deg, rgba(217,164,91,.12), rgba(255,255,255,.02) 50%); border:1px solid var(--line); border-radius:20px; padding:2.2rem; height:100%; }
+  .access-card .big{ font-family:"Noto Serif JP",serif; font-size:1.35rem; line-height:1.9; }
+  .tel-num{ font-family:"Playfair Display",serif; font-size:clamp(1.7rem,5vw,2.4rem); letter-spacing:.08em; color:var(--cream); text-decoration:none; }
+  .tel-num:hover{ color:var(--gold2); }
+
+  /* ---------- CTA / FOOTER ---------- */
+  .cta-band{ border-top:1px solid var(--line); background:
+      radial-gradient(60% 120% at 50% 0%, rgba(217,164,91,.16), transparent 70%), var(--ink2); padding:5.5rem 0; text-align:center; }
+  .cta-band .big-serif{ font-family:"Noto Serif JP",serif; font-size:clamp(1.3rem,4vw,2rem); line-height:2; }
+  footer{ border-top:1px solid rgba(217,164,91,.15); padding:2.6rem 0 6.5rem; color:var(--cream-dim); font-size:.85rem; }
+  footer .fbrand{ font-family:"Playfair Display",serif; font-weight:900; letter-spacing:.35em; color:var(--cream); }
+  footer a{ color:var(--cream-dim); text-decoration:none; margin:0 .8rem; letter-spacing:.2em; font-size:.78rem; }
+  footer a:hover{ color:var(--gold2); }
+
+  .mobile-cta{
+    position:fixed; left:0; right:0; bottom:0; z-index:1030; display:none;
+    background:rgba(13,11,9,.82); backdrop-filter:blur(14px); border-top:1px solid var(--line);
+  }
+  .mobile-cta a{ flex:1; text-align:center; padding:.85rem 0 calc(.85rem + env(safe-area-inset-bottom)); color:var(--cream); text-decoration:none; font-size:.85rem; letter-spacing:.15em; }
+  .mobile-cta a + a{ border-left:1px solid rgba(244,234,216,.12); }
+  .mobile-cta a b{ color:var(--gold2); font-weight:600; }
+  @media (max-width:767.98px){
+    .mobile-cta{ display:flex; }
+    .scroll-hint{ display:none; }
+    section.blk{ padding:4.2rem 0; }
+    footer{ padding-bottom:7.5rem; }
+  }
+  .to-top{
+    position:fixed; right:1.1rem; bottom:5.6rem; z-index:1020; width:46px; height:46px; border-radius:50%;
+    border:1px solid var(--line); background:rgba(13,11,9,.7); color:var(--gold2); backdrop-filter:blur(8px);
+    display:flex; align-items:center; justify-content:center; text-decoration:none; opacity:0; pointer-events:none; transition:opacity .4s;
+  }
+  .to-top.show{ opacity:1; pointer-events:auto; }
+  @media (min-width:768px){ .to-top{ bottom:1.4rem; } }
+</style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" tabindex="0">
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-novel fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="#top">BAR <span>NOVEL</span></a>
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="メニュー">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#menu">MENU</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery">GALLERY</a></li>
+        <li class="nav-item"><a class="nav-link" href="#info">INFO</a></li>
+        <li class="nav-item"><a class="nav-link" href="#access">ACCESS</a></li>
+        <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="btn btn-gold btn-sm" href="https://www.instagram.com/isehara.bar.cocktail.novel/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-shade"></div>
+  <div class="hero-inner">
+    <div class="container">
+      <p class="hero-kicker fade-up d1">Isehara — Est. Night Only</p>
+      <p class="hero-copy fade-up d2">女性一人でも気軽に。<br>会話とお酒を楽しむ、居心地の良い空間。</p>
+      <h1 class="hero-title fade-up d3">BAR<br><span class="accent">NOVEL</span></h1>
+      <div class="hero-meta fade-up d4 mt-4">
+        <span class="chip"><b>20:00</b> — <b>04:00</b></span>
+        <span class="chip">月曜定休</span>
+        <span class="chip">伊勢原駅南口 <b>徒歩1分</b></span>
+      </div>
+      <div class="fade-up d5 mt-4 d-flex flex-wrap gap-2">
+        <a class="btn btn-gold" href="#menu">メニューを見る</a>
+        <a class="btn btn-ghost" href="https://maps.app.goo.gl/pQygL5VJowjCGWbm6" target="_blank" rel="noopener">Google Maps</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marqueeTrack">
+    <span>COCKTAIL <i>◆</i></span><span>WHISKY <i>◆</i></span><span>ISEHARA <i>◆</i></span>
+    <span>OPEN 20:00 — 04:00 <i>◆</i></span><span>BAR NOVEL <i>◆</i></span><span>GOOD TALK, GOOD DRINKS <i>◆</i></span>
+  </div>
+</div>
+
+<!-- MENU -->
+<section class="blk" id="menu">
+  <div class="container">
+    <div class="sec-head reveal">
+      <p class="sec-index">01 — MENU</p>
+      <h2 class="sec-title">Tonight's Menu</h2>
+      <p class="sec-sub mt-2">定番の一杯から、その日の気分で作るお任せまで。</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-6 reveal">
+        <div class="menu-card">
+          <h3>DRINK</h3>
+          <div class="mi"><div><span class="nm">カクテル</span><span class="nt">定番からアレンジまで、お好みに合わせて</span></div><span class="dots"></span><span class="pr">¥750〜</span></div>
+          <div class="mi"><div><span class="nm">お任せカクテル</span><span class="nt">その日の気分を伝えるだけ</span></div><span class="dots"></span><span class="pr">¥750〜</span></div>
+          <div class="mi"><div><span class="nm">ウイスキー</span><span class="nt">ロック／ハイボール／水割り</span></div><span class="dots"></span><span class="pr">¥750〜</span></div>
+          <div class="mi"><div><span class="nm">ハイネケン（瓶）</span></div><span class="dots"></span><span class="pr">¥800</span></div>
+          <div class="mi"><div><span class="nm">焼酎</span></div><span class="dots"></span><span class="pr">¥600〜</span></div>
+          <div class="mi"><div><span class="nm">テキーラ</span></div><span class="dots"></span><span class="pr">¥500</span></div>
+        </div>
+      </div>
+      <div class="col-lg-6 reveal">
+        <div class="row g-4 h-100">
+          <div class="col-12">
+            <div class="menu-card">
+              <h3>FOOD</h3>
+              <div class="mi"><div><span class="nm">ソーセージ盛り合わせ</span></div><span class="dots"></span><span class="pr">¥1,000</span></div>
+              <div class="mi"><div><span class="nm">本日のパスタ</span><span class="nt">内容は当日のお楽しみ</span></div><span class="dots"></span><span class="pr">¥1,000〜</span></div>
+            </div>
+          </div>
+          <div class="col-12 flex-grow-1">
+            <div class="menu-photo">
+              <img src="https://raw.githubusercontent.com/sota-furuta/bar-novel-bootstrap/main/IMG_8580.jpeg" alt="ソーセージ盛り合わせ" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="blk" id="gallery" style="background:var(--ink2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="container">
+    <div class="sec-head reveal">
+      <p class="sec-index">02 — GALLERY</p>
+      <h2 class="sec-title">The Atmosphere</h2>
+      <p class="sec-sub mt-2">カウンターの灯りと、今夜の一杯。</p>
+    </div>
+    <div class="g-grid reveal">
+      <figure class="g-item big"><img src="https://raw.githubusercontent.com/sota-furuta/bar-novel-bootstrap/main/IMG_8581.jpeg" alt="店内カウンター" loading="lazy"><figcaption>店内カウンター</figcaption></figure>
+      <figure class="g-item"><img src="https://raw.githubusercontent.com/sota-furuta/bar-novel-bootstrap/main/IMG_8583.jpeg" alt="カクテル" loading="lazy"><figcaption>カクテル</figcaption></figure>
+      <figure class="g-item"><img src="https://raw.githubusercontent.com/sota-furuta/bar-novel-bootstrap/main/IMG_8580.jpeg" alt="ソーセージ盛り合わせ" loading="lazy"><figcaption>ソーセージ盛り合わせ</figcaption></figure>
+      <figure class="g-item"><img src="https://raw.githubusercontent.com/sota-furuta/bar-novel-bootstrap/main/IMG_8584.jpeg" alt="おつまみ" loading="lazy"><figcaption>おつまみ</figcaption></figure>
+      <figure class="g-item"><img src="https://raw.githubusercontent.com/sota-furuta/bar-novel-bootstrap/main/IMG_8582.jpeg" alt="小鉢" loading="lazy"><figcaption>小鉢</figcaption></figure>
+      <figure class="g-item big"><img src="https://raw.githubusercontent.com/sota-furuta/bar-novel/feature-bar-novel-oner-review/images/exterior.jpg" alt="店舗外観" loading="lazy"><figcaption>店舗外観</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- INFO / ACCESS -->
+<section class="blk" id="info">
+  <div class="container">
+    <div class="sec-head reveal">
+      <p class="sec-index">03 — INFORMATION / ACCESS</p>
+      <h2 class="sec-title">Visit Us</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-6 reveal">
+        <table class="info-table">
+          <tr><th>店名</th><td>BAR NOVEL</td></tr>
+          <tr><th>営業時間</th><td>20:00 〜 翌04:00</td></tr>
+          <tr><th>定休日</th><td>月曜日</td></tr>
+          <tr><th>電話番号</th><td>070-3861-1472</td></tr>
+          <tr><th>Instagram</th><td>@isehara.bar.cocktail.novel<br><span style="color:var(--cream-dim); font-size:.88rem;">ご予約・お問い合わせはInstagramより</span></td></tr>
+        </table>
+      </div>
+      <div class="col-lg-6 reveal" id="access">
+        <div class="access-card">
+          <p class="sec-index mb-3">ACCESS</p>
+          <p class="big">伊勢原駅南口から徒歩約1分</p>
+          <p class="mt-2" style="color:var(--cream-dim); font-family:'Noto Serif JP',serif;">神奈川県伊勢原市桜台1-1-25<br>アーバンヒルズ2F</p>
+          <a class="tel-num d-inline-block mt-3" href="tel:07038611472">070-3861-1472</a>
+          <div class="d-flex flex-wrap gap-2 mt-4">
+            <a class="btn btn-gold" href="https://maps.app.goo.gl/pQygL5VJowjCGWbm6" target="_blank" rel="noopener">Google Mapsで開く</a>
+            <a class="btn btn-ghost" href="tel:07038611472">電話する</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div class="container reveal">
+    <p class="sec-index">TONIGHT</p>
+    <p class="big-serif mt-3">今夜も20時から、<br>伊勢原でお待ちしています。</p>
+    <a class="btn btn-gold btn-lg mt-4" href="https://www.instagram.com/isehara.bar.cocktail.novel/" target="_blank" rel="noopener">Instagramを見る</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+    <span class="fbrand">BAR NOVEL</span>
+    <nav>
+      <a href="#menu">MENU</a><a href="#gallery">GALLERY</a><a href="#info">INFO</a><a href="#access">ACCESS</a>
+    </nav>
+    <span>© BAR NOVEL</span>
+  </div>
+</footer>
+
+<!-- MOBILE CTA -->
+<div class="mobile-cta">
+  <a href="tel:07038611472"><b>電話</b>する</a>
+  <a href="https://maps.app.goo.gl/pQygL5VJowjCGWbm6" target="_blank" rel="noopener"><b>地図</b>を開く</a>
+  <a href="https://www.instagram.com/isehara.bar.cocktail.novel/" target="_blank" rel="noopener"><b>Instagram</b></a>
+</div>
+
+<a href="#top" class="to-top" id="toTop" aria-label="トップへ戻る">↑</a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // マーキー複製（無限ループ用）
+  const track = document.getElementById('marqueeTrack');
+  track.innerHTML += track.innerHTML;
+
+  // スクロールでふわっと表示
+  const io = new IntersectionObserver((es) => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // トップへ戻る
+  const toTop = document.getElementById('toTop');
+  addEventListener('scroll', () => toTop.classList.toggle('show', scrollY > 600), { passive: true });
+
+  // モバイルメニューを押したら閉じる
+  document.querySelectorAll('#navMenu .nav-link, #navMenu .btn').forEach(a =>
+    a.addEventListener('click', () => bootstrap.Collapse.getOrCreateInstance(document.getElementById('navMenu')).hide()));
+</script>
+</body>
+</html>
